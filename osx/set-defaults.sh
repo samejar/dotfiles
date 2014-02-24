@@ -325,6 +325,15 @@ defaults write com.apple.dock wvous-tr-modifier -int 0
 defaults write com.apple.dock wvous-bl-corner -int 5
 defaults write com.apple.dock wvous-bl-modifier -int 0
 
+
+###############################################################################
+# Spaces                                                                      #
+###############################################################################
+
+#Prevent most recently used space reordering
+defaults write com.apple.dock mru-spaces  -int 0
+
+"mru-spaces" = 0;
 ###############################################################################
 # Safari & WebKit                                                             #
 ###############################################################################
