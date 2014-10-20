@@ -1,0 +1,25 @@
+
+# Keytree Bastion Host
+Host kt-bastion
+  Hostname access.eu.keytree.net
+  Port 422
+  User ajames
+
+
+Host kt-ciserver
+  Hostname keyeujkn01
+  Port 422
+  User ajames
+  ProxyCommand ssh kt-bastion nc %h %p
+
+Host ki-ciagent1
+  Hostname keyeujkn02
+  Port 422
+  User ajames
+  ProxyCommand ssh kt-bastion nc %h %p
+
+Host ki-ciagent2
+  Hostname keyeujkn03
+  Port 422
+  User ajames
+  ProxyCommand ssh kt-bastion nc %h %p
