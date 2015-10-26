@@ -509,6 +509,14 @@ defaults write com.twitter.twitter-mac ShowFullNames -bool true
 defaults write com.twitter.twitter-mac HideInBackground -bool true
 
 ###############################################################################
+# Photos.app                                                                 #
+###############################################################################
+
+# Prevent Photos from opening when iOS device plugged in
+defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool YES
+
+
+###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
 
