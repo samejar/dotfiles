@@ -140,7 +140,7 @@ cask 'telegram'
 cask 'tilemill'
 cask 'toggldesktop'
 cask 'transmission'
-cask 'transmit'
+#cask 'transmit'
 cask 'tripmode'
 cask 'tunnelblick'
 cask 'vagrant'
@@ -213,6 +213,7 @@ mas 'Spillo', id: 873245660
 mas 'Telegram', id: 747648890
 mas 'Textual 6', id: 896450579
 mas 'TrackingTime', id: 967777543
+mas 'Transmit', id: 403388562
 mas 'Tweetbot', id: 557168941
 mas 'Ulysses', id: 623795237
 mas 'WhatsApp', id: 1147396723
