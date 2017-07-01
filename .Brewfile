@@ -120,7 +120,6 @@ cask 'marked'
 cask 'microsoft-office'
 cask 'monodraw'
 cask 'ngrok'
-cask 'omnifocus'
 cask 'openrefine'
 cask 'opera'
 cask 'paw'
@@ -216,5 +215,6 @@ mas 'Textual 6', id: 896450579
 mas 'TrackingTime', id: 967777543
 mas 'Tweetbot', id: 557168941
 mas 'Ulysses', id: 623795237
+mas 'WhatsApp', id: 1147396723
 mas 'Wire', id: 931134707
 mas 'Xcode', id: 497799835
