@@ -19,7 +19,7 @@ brew 'curl'
 brew 'dnsmasq'
 brew 'docker'
 brew 'exiftool'
-brew 'ffmpeg'
+brew 'ffmpeg', args: ['with-fdk-aac', 'with-tools', 'with-freetype', 'with-libass', 'with-libvorbis', 'with-libvpx', 'with-x265']
 brew 'findutils'
 brew 'fontforge'
 brew 'gifsicle'
@@ -61,6 +61,7 @@ brew 'zopfli'
 cask '1password'
 cask 'adobe-creative-cloud'
 cask 'adobe-bridge-cc'
+cash 'airtable'
 cask 'alfred'
 cask 'amazon-drive'
 cask 'amazon-workspaces'
@@ -73,6 +74,7 @@ cask 'audio-hijack'
 cask 'bartender'
 cask 'bettertouchtool'
 cask 'box-sync'
+cask 'brave'
 cask 'busycontacts'
 cask 'calibre'
 cask 'charles'
@@ -131,6 +133,7 @@ cask 'rstudio'
 cask 'scansnap-manager-ix500'
 cask 'screenhero'
 cask 'skype'
+cask 'skype-for-business'
 cask 'slack'
 cask 'sonos'
 cask 'sourcetree'
@@ -182,6 +185,7 @@ mas 'Day One', id: 1055511498
 mas 'Deckset', id: 847496013
 mas 'Deliveries', id: 924726344
 mas 'Dropzone', id: 695406827
+mas 'Fantastical 2', id: 695406827
 mas 'GAGet', id: 968487158
 mas 'Glimpses', id: 637565340
 mas 'GoodNotes', id: 1026566364
