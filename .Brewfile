@@ -10,6 +10,7 @@ tap 'homebrew/services'
 
 brew 'ack'
 brew 'awscli'
+brew 'azure-cli'
 brew 'certbot'
 brew 'chromedriver'
 brew 'cmake'
@@ -40,6 +41,7 @@ brew 'mas'
 brew 'netcat'
 brew 'nmap'
 brew 'nodenv'
+brew 'packer'
 brew 'openssl'
 brew 'rbenv'
 brew 'readline'
@@ -50,6 +52,7 @@ brew 'spaceman-diff'
 brew 'spark'
 brew 'ssh-copy-id'
 brew 'terraform'
+brew 'tmux'
 brew 'unrar'
 brew 'webp'
 brew 'wget'
@@ -86,8 +89,10 @@ cask 'coda'
 #cask 'continuity-activation-tool'
 #cask 'controlplane'
 cask 'crashplan'
+cask 'dash'
 cask 'datagrip'
 cask 'dayone-cli'
+cask 'dotnet'
 cask 'dropbox'
 #cask 'dropzone'
 cask 'eclipse-java'
@@ -132,6 +137,7 @@ cask 'resilio-sync'
 cask 'rstudio'
 cask 'scansnap-manager-ix500'
 cask 'screenhero'
+cask 'sketch'
 cask 'skype'
 cask 'skype-for-business'
 cask 'slack'
@@ -143,7 +149,7 @@ cask 'telegram'
 cask 'tilemill'
 cask 'toggldesktop'
 cask 'transmission'
-#cask 'transmit'
+cask 'transmit'
 cask 'tripmode'
 cask 'tunnelblick'
 cask 'vagrant'
@@ -180,10 +186,12 @@ mas 'Better', id: 1121192229
 mas 'Blackmagic Disk Speed Test', id: 425264550
 mas 'Cinemagraph Pro', id: 777874532
 mas 'CodeBox', id: 412536790
+mas 'Coinverter', id: 926121450 
 mas 'DaisyDisk', id: 411643860
 mas 'Day One', id: 1055511498
 mas 'Deckset', id: 847496013
 mas 'Deliveries', id: 924726344
+mas 'Drqaft Control', id: 644346785
 mas 'Dropzone', id: 695406827
 mas 'Fantastical 2', id: 695406827
 mas 'GAGet', id: 968487158
@@ -209,10 +217,12 @@ mas 'Pixave', id: 924891282
 mas 'Pixelmator', id: 407963104
 mas 'Pixen', id: 525180431
 mas 'Remote Desktop', id: 409907375
+mas 'Sauce', id: 
 mas 'ScreenFloat', id: 414528154
 mas 'Screenium 3', id: 921553264
 mas 'Shopify', id: 1208212036
 mas 'Shuttie', id: 415184888
+mas 'Soulver', id: 413965349
 mas 'Spillo', id: 873245660
 mas 'Telegram', id: 747648890
 mas 'Textual 6', id: 896450579
