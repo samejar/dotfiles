@@ -4,3 +4,4 @@ then
 fi
 
 npm install grunt-cli -g
+npm install serverless -g
