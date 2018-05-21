@@ -28,6 +28,7 @@ brew 'git'
 brew 'git-crypt'
 brew 'go'
 brew 'grc'
+brew 'guetzli'
 brew 'httpie'
 #brew 'hub'
 brew 'imagemagick', args: ['with-librsvg']
@@ -83,7 +84,7 @@ cask 'calibre'
 cask 'charles'
 cask 'choosy'
 cask 'clarify'
-cask 'cloak'
+cask 'encryptme'
 cask 'cocktail'
 cask 'coda'
 #cask 'continuity-activation-tool'
@@ -95,6 +96,7 @@ cask 'dayone-cli'
 cask 'dotnet'
 cask 'dropbox'
 #cask 'dropzone'
+cask 'duti'
 cask 'eclipse-java'
 cask 'evernote'
 cask 'firefox'
@@ -201,6 +203,7 @@ mas 'GoodNotes', id: 1026566364
 mas 'iMovie', id: 408981434
 mas 'Intensify', id: 716854513
 mas 'Keynote', id: 409183694
+mas 'Klib', id: 1196268448
 mas 'Labels and Databases', id: 922445776
 mas 'Magnet', id: 441258766
 mas 'MediaInfo', id: 510620098
@@ -228,7 +231,7 @@ mas 'Spillo', id: 873245660
 mas 'Telegram', id: 747648890
 mas 'Textual 6', id: 896450579
 mas 'TrackingTime', id: 967777543
-mas 'Transmit', id: 403388562
+#mas 'Transmit', id: 403388562
 mas 'Tweetbot', id: 557168941
 mas 'Ulysses', id: 623795237
 mas 'WhatsApp', id: 1147396723
