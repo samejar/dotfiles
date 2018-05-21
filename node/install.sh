@@ -14,3 +14,5 @@ echo "Installing serverless"
 npm install serverless -g
 echo "Installing nativefier"
 npm install nativefier -g
+echo "Installing API2HTML"
+npm install api2html -g
