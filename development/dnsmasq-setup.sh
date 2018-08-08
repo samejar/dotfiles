@@ -7,8 +7,9 @@ sudo cp $(brew list dnsmasq | grep /homebrew.mxcl.dnsmasq.plist) /Library/Launch
 # Start Dnsmasq automatically.
 sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
 
-# Insert this into your /usr/local/etc/dnsmasq.conf (Not commented)
-# address=/test/127.0.0.1
+echo "Insert this into your /usr/local/etc/dnsmasq.conf (Not commented)"
+echo "  address=/test/127.0.0.1"
+
 sudo mkdir -p /etc/resolver
 
 sudo tee /etc/resolver/test >/dev/null <<EOF
