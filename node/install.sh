@@ -16,3 +16,10 @@ echo "Installing nativefier"
 npm install nativefier -g
 echo "Installing API2HTML"
 npm install api2html -g
+echo "Installing Cypress"
+npm install cypress -g
+echo "Installing npx"
+npm install npx -g
+
+echo "Installing Parcel"
+yarn global add parcel-bundler
