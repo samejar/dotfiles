@@ -12,7 +12,7 @@ brew 'ack'
 brew 'awscli'
 brew 'azure-cli'
 brew 'certbot'
-brew 'chromedriver'
+#brew 'chromedriver'
 brew 'cmake'
 brew 'coreutils'
 brew 'coreutils'
@@ -62,13 +62,14 @@ brew 'x264'
 brew 'yarn'
 brew 'youtube-dl'
 brew 'zopfli'
+brew 'zsh'
 
 cask '1password'
 cask 'adobe-creative-cloud'
 cask 'adobe-bridge-cc'
-cash 'airtable'
+cask 'airtable'
 cask 'alfred'
-cask 'amazon-drive'
+#cask 'amazon-drive'
 cask 'amazon-workspaces'
 cask 'aws-vault'
 cask 'appcleaner'
@@ -80,7 +81,7 @@ cask 'bartender'
 cask 'bettertouchtool'
 cask 'box-sync'
 cask 'brave'
-cask 'busycontacts'
+#cask 'busycontacts'
 cask 'calibre'
 cask 'charles'
 cask 'choosy'
@@ -88,9 +89,8 @@ cask 'clarify'
 cask 'encryptme'
 cask 'cocktail'
 cask 'coda'
-#cask 'continuity-activation-tool'
 #cask 'controlplane'
-cask 'crashplan'
+#cask 'crashplan'
 cask 'dash'
 cask 'datagrip'
 cask 'dayone-cli'
@@ -130,16 +130,17 @@ cask 'marked'
 cask 'microsoft-office'
 cask 'monodraw'
 cask 'ngrok'
+cask 'notion'
 cask 'openrefine'
 cask 'opera'
-cask 'paw'
+#cask 'paw'
 cask 'postman'
 cask 'powerphotos'
-cask 'resilio-sync'
+#cask 'resilio-sync'
 #cask 'robomongo'
 cask 'rstudio'
 cask 'scansnap-manager-ix500'
-cask 'screenhero'
+#cask 'screenhero'
 cask 'setapp'
 cask 'sketch'
 cask 'skype'
@@ -154,6 +155,7 @@ cask 'tilemill'
 cask 'toggldesktop'
 cask 'transmission'
 cask 'transmit'
+cask 'tresorit'
 cask 'tripmode'
 cask 'tunnelblick'
 cask 'vagrant'
@@ -195,7 +197,7 @@ mas 'DaisyDisk', id: 411643860
 mas 'Day One', id: 1055511498
 mas 'Deckset', id: 847496013
 mas 'Deliveries', id: 924726344
-mas 'Drqaft Control', id: 644346785
+mas 'Draft Control', id: 644346785
 mas 'Dropzone', id: 695406827
 mas 'Fantastical 2', id: 695406827
 mas 'GAGet', id: 968487158
@@ -221,8 +223,8 @@ mas 'Photo Privacy', id: 428752671
 mas 'Pixave', id: 924891282
 mas 'Pixelmator', id: 407963104
 mas 'Pixen', id: 525180431
-mas 'Remote Desktop', id: 409907375
-mas 'Sauce', id: 
+#mas 'Remote Desktop', id: 409907375
+#mas 'Sauce', id: 
 mas 'ScreenFloat', id: 414528154
 mas 'Screenium 3', id: 921553264
 mas 'Shopify', id: 1208212036
