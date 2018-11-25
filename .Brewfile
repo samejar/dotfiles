@@ -43,6 +43,7 @@ brew 'lame'
 brew 'libcaca', args: ['with-imlib2']
 brew 'libgit2'
 brew 'mas'
+brew 'mockserver'
 brew 'netcat'
 brew 'nmap'
 brew 'nodenv'
