@@ -399,6 +399,7 @@ defaults write com.apple.terminal StringEncodings -array 4
 #defaults write com.apple.terminal FocusFollowsMouse -bool true
 #defaults write org.x.X11 wm_ffm -bool true
 
+
 ###############################################################################
 # Time Machine                                                                #
 ###############################################################################
@@ -443,6 +444,11 @@ defaults write com.google.Chrome.canary ExtensionInstallSources -array "https://
 ###############################################################################
 # Prevent Photos from opening when iOS device plugged in
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool YES
+
+###############################################################################
+# Captive WiFi                                                                #
+###############################################################################
+defaults write /Library/Preferences/SystemConfiguration/com.apple.captive.control Active -boolean false
 
 ###############################################################################
 # Kill affected applications                                                  #
