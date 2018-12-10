@@ -14,8 +14,11 @@ echo "Installing serverless"
 npm install serverless -g
 echo "Installing nativefier"
 npm install nativefier -g
-echo "Installing API2HTML"
+echo "Installing API2HTML - OpeanAPI Doc Generator"
 npm install api2html -g
+echo "Installing redoc-cli - OpeanAPI Doc Generator"
+npm install redoc-cli -g
+
 echo "Installing Cypress"
 npm install cypress -g
 echo "Installing npx"
