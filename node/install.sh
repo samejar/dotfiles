@@ -23,6 +23,9 @@ echo "Installing Cypress"
 npm install cypress -g
 echo "Installing npx"
 npm install npx -g
+echo "Installing snyk"
+npm install -g snyk
+
 
 echo "Installing Parcel"
 yarn global add parcel-bundler
