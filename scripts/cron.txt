@@ -1,0 +1,5 @@
+PATH=/usr/local/bin:/usr/bin:/bin
+
+@reboot	ssh-add -K ~/.ssh/id_rsa
+
+0	02,20	*	*	0	/Users/ajames/.dotfiles/scripts/cron.sh
