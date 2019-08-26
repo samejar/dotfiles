@@ -66,6 +66,7 @@ brew 'youtube-dl'
 
 # Cloud CLIs
 brew 'awscli'
+brew 'aws-sam-cli'
 brew 'azure-cli'
 
 brew 'mockserver'
