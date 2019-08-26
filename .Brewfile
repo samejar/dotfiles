@@ -9,6 +9,7 @@ tap 'homebrew/formula-analytics'
 tap 'homebrew/services'
 tap 'shopify/shopify'
 tap 'wagoodman/dive'
+tap 'aws/tap'
 
 brew 'ack'
 
