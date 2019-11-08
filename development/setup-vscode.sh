@@ -1,3 +1,5 @@
+echo "On macOS, you need to manually run the Shell Command: Install 'code' command in PATH command (available through the Command Palette ⇧⌘P)."
+
 code --install-extension auchenberg.vscode-browser-preview
 code --install-extension k--kato.intellij-idea-keybindings
 code --install-extension vscjava.vscode-java-pack
