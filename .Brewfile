@@ -40,6 +40,8 @@ brew 'ssh-copy-id'
 brew 'tmux'
 brew 'roundup' # Unit testing
 
+brew 'zsh'
+
 # Compression
 brew 'zstd'
 brew 'guetzli'
@@ -62,15 +64,7 @@ brew 'tldr'
 # Terminal
 cask 'kitty'
 
-# Development
-brew 'git'
-brew 'git-crypt'
-# Git Large File Storage
-brew 'git-lfs'
-
-
-
-################
+###############
 # Development #
 ###############
 
@@ -83,11 +77,7 @@ cask 'zulu11'
 brew 'jenv'
 brew 'maven'
 brew 'gradle@5'
-# IDEs
-cask 'jetbrains-toolbox'
-cask 'eclipse-java'
 # Tooling
-cask 'yourkit-java-profiler'
 brew 'infer'
 
 # JS Development
@@ -104,13 +94,49 @@ brew 'go'
 brew 'rbenv'
 brew 'ruby-build'
 
+# .Net Development
+# ----------------
+cask 'dotnet'
+
+# SCM
+# ---
+cask 'sourcetree'
+brew 'git'
+brew 'git-crypt'
+# Git Large File Storage
+brew 'git-lfs'
+brew 'libgit2'
+brew 'spaceman-diff'
+cask 'fork'
+cask 'github'
+
+# IDEs
+# ----
+cask 'coda'
+cask 'eclipse-java'
+cask 'jetbrains-toolbox'
+cask 'openrefine'
+cask 'rstudio'
+
+# Text Editors & Doc Tooling
+# --------------------------
+cask 'sublime-text'
+cask 'atom'
+cask 'macdown'
+# PlantUML markup text to diagram
+brew 'plantuml'
+
 # Network
 # -------
 brew 'dnsmasq'
 brew 'netcat'
 brew 'nmap'
+cask 'charles'
+cask 'ngrok'
 # Insomnia: REST client for API testing.
 cask 'insomnia'
+#cask 'paw' #Setapp
+cask 'postman'
 
 # Cloud CLIs
 # ----------
@@ -122,12 +148,29 @@ cask 'aws-vault'
 brew 'azure-cli'
 brew 'terraform'
 
-# Containers
-# ----------
+# Containers & VMs
+# ----------------
 cask 'docker'
 brew 'dive'
 brew 'packer'
 brew 'minikube'
+
+cask 'vmware-fusion'
+cask 'vagrant'
+
+# Web Development
+-----------------
+cask 'ghostlab'
+
+# Databases
+# ---------
+# Postgres commmand line interface (CLI) with autocomplete
+brew 'pgcli'
+# SQLite database: self-contained, serverless, zero-configuration, transactional engine.
+brew 'sqlite', link: true
+# Sequel Pro database management application.
+cask 'sequel-pro'
+#cask 'robomongo'
 
 # Ops
 # ---
@@ -142,6 +185,15 @@ brew 'certbot'
 brew 'mockserver'
 #brew 'chromedriver'
 
+# Utilities
+# ---------
+cask 'dash'
+brew 'themekit'
+
+
+#############
+# CLI Tools #
+#############
 
 
 # Downloaders
@@ -162,6 +214,9 @@ brew 'jp2a'
 #brew 'libcaca', args: ['with-imlib2']
 brew 'webp'
 brew 'graphviz'
+cask 'imagealpha'
+cask 'imagemin'
+cask 'imageoptim'
  
 # A/V tools
 # ---------
@@ -169,189 +224,141 @@ brew 'lame'
 brew 'theora'
 brew 'x264'
 
-
-brew 'fontforge'
-
-#brew 'hub'
-
-#brew 'libgit2'
-brew 'mas'
-
+# Misc
+# ----
 brew 'googler'
-
-brew 'rsync'
-
-brew 'spaceman-diff'
-brew 'spark'                        # sparklines for your shell
-
-
-
+# sparklines for your shell
+brew 'spark'
 brew 'youtube-dl'
 
+################
+# Applications #
+################
 
-
-
-
-brew 'themekit'
-
-
-brew 'zsh'
-
+brew 'mas'
+cask 'setapp'
 
 # Browsers
+# --------
 cask 'brave'
 cask 'firefox'
 cask 'google-chrome'
 cask 'microsoft-edge-dev'
+cask 'opera'
 cask 'choosy'
+cask 'fluid'
 
 # Security
+# --------
 cask '1password'
 cask 'keybase'
 # Pass, a Unix password manager for the command line
 brew 'pass'
 brew 'ykman'
+cask 'encryptme'
+cask 'expressvpn'
+cask 'yubico-authenticator'
+cask 'yubico-yubikey-manager'
 
 # Network
-cask 'charles'
-cask 'ngrok'
+# -------
 cask 'little-snitch'
-cask 'postman'
 cask 'tunnelblick'
 cask 'viscosity'
+cask 'wireshark'
 
 # Chat
+# ----
 cask 'skype'
-cask 'skype-for-business'
+#cask 'skype-for-business'
 cask 'slack'
 cask 'telegram'
 
-# Development
-
-
-
-cask 'dotnet'
-
-
-
-
-
-# PlantUML markup text to diagram
-brew 'plantuml'
-
-## Editors
-cask 'sublime-text'
-cask 'atom'
-
-
-# Databases
-# Postgres commmand line interface (CLI) with autocomplete
-brew 'pgcli'
-# SQLite database: self-contained, serverless, zero-configuration, transactional engine.
-brew 'sqlite', link: true
-# Sequel Pro database management application.
-cask 'sequel-pro'
-
-
-cask 'vmware-fusion'
-
-cask 'ghostlab'
-
-cask 'sourcetree'
-cask 'dash'
-
-
+# Graphics Software
+# -----------------
 cask 'adobe-creative-cloud'
 cask 'adobe-bridge-cc'
-cask 'airtable'
-cask 'alfred'
-#cask 'amazon-drive'
-cask 'amazon-workspaces'
+cask 'monodraw'
+cask 'icons8'
+cask 'sketch'
 
-cask 'appcleaner'
-cask 'appcode'
-#cask 'arq'
+# A/V Software
+# ------------
 cask 'audio-hijack'
-cask 'bartender'
-cask 'bettertouchtool'
+cask 'handbrake'
+cask 'iina'
+cask 'powerphotos'
+cask 'vlc'
 
-#cask 'busycontacts'
 # e-Books
+# -------
 cask 'calibre'
 cask 'kindle'
 
-
-cask 'clarify'
-cask 'encryptme'
+# macOS utilities
+# ---------------
+cask 'appcleaner'
+cask 'alfred'
+#cask 'bartender' #setapp
+#cask 'bettertouchtool' #setapp
 cask 'cocktail'
-cask 'coda'
-
-cask 'dayone-cli'
-
-cask 'dropbox'
 cask 'duti'
-
-cask 'evernote'
-
-cask 'fluid'
-cask 'geekbench'
-
-cask 'google-adwords-editor'
-cask 'google-drive'
-cask 'grammarly'
-cask 'handbrake'
 cask 'hazel'
-cask 'icons8'
-cask 'iina'
-cask 'imagealpha'
-cask 'imagemin'
-cask 'imageoptim'
-cask 'intel-power-gadget'
-#cask 'intel-xdk-iot'
-cask 'macdown'
-cask 'mailmate'
-#cask 'mapbox-studio'
-cask 'marked'
-#cask 'microsoft-lync'
-cask 'microsoft-office'
-cask 'monodraw'
-cask 'notion'
-cask 'openrefine'
-cask 'opera'
-#cask 'paw'
-cask 'powerphotos'
+#cask 'tripmode' #setapp
+
+# Hardware Applications
+# ---------------------
+#cask 'scansnap-manager-ix500' #Replaced by ScanSnap Home
+
+# File Sync & Backup
+# ------------------
+#cask 'amazon-drive'
+#cask 'arq'
+cask 'dropbox'
+cask 'google-drive'
 #cask 'resilio-sync'
-#cask 'robomongo'
-cask 'rstudio'
-cask 'scansnap-manager-ix500'
-#cask 'screenhero'
-cask 'setapp'
-cask 'sketch'
-cask 'sonos'
-cask 'steam'
-cask 'tilemill'
-cask 'toggldesktop'
+brew 'rsync'
 cask 'transmission'
 cask 'transmit'
-cask 'tresorit'
-cask 'tripmode'
-cask 'vagrant'
-cask 'vitamin-r'
-cask 'vlc'
-cask 'wireshark'
+#cask 'tresorit'
 
-###########################################################################
-# FONTS
-###########################################################################
+# Productivity
+# ------------
+cask 'airtable'
+cask 'grammarly'
+cask 'mailmate'
+cask 'mailspring'
+cask 'microsoft-office'
+cask 'notion'
+cask 'slite'
+
+# Project Management
+# ------------------
+brew 'clickup'
+
+# Misc
+# ----
+#cask 'busycontacts'
+cask 'geekbench'
+cask 'google-adwords-editor'
+cask 'intel-power-gadget'
+cask 'marked'
+cask 'toggldesktop'
+cask 'tilemill'
+
+
+#########
+# Fonts #
+#########
 cask 'font-fira-code'
 cask 'font-iosevka'
 cask 'font-pt-mono'
 cask 'font-pt-sans'
 cask 'font-pt-serif'
 
-###########################################################################
-# quicklook
-###########################################################################
+#############
+# Quicklook #
+#############
 cask 'betterzipql'
 cask 'cert-quicklook'
 cask 'qlcolorcode'
@@ -368,7 +375,7 @@ cask 'webpquicklook'
 mas 'Affinity Designer', id: 824171161
 mas 'Affinity Photo', id: 824183456
 mas 'Annotate', id: 918207447
-mas 'Apple Configurator', id: 1037126344
+mas 'Apple Configurator 2', id: 1037126344
 mas 'Be Focused', id: 973134470
 mas 'Bear', id: 1091189122
 mas 'Better', id: 1121192229
@@ -378,27 +385,33 @@ mas 'CodeBox', id: 412536790
 mas 'Coinverter', id: 926121450 
 mas 'DaisyDisk', id: 411643860
 mas 'Day One', id: 1055511498
+cask 'dayone-cli'
 mas 'Deckset', id: 847496013
 mas 'Deliveries', id: 924726344
 mas 'Draft Control', id: 644346785
+mas 'Drafts', id: 1435957248
 mas 'Dropzone', id: 695406827
 mas 'Fantastical 2', id: 695406827
 mas 'GAGet', id: 968487158
 mas 'Glimpses', id: 637565340
-mas 'GoodNotes', id: 1026566364
+mas 'GoodNotes 5', id: 1480793815
 mas 'iMovie', id: 408981434
 mas 'Intensify', id: 716854513
+mas 'Jira Cloud', id: 1475897096
 mas 'Keynote', id: 409183694
+mas 'Keep It', id: 1272768911
 mas 'Klib', id: 1196268448
 mas 'Labels and Databases', id: 922445776
+mas 'Lire', id: 1482527526
+mas 'macOS Server', id: 883878097
 mas 'Magnet', id: 441258766
 mas 'MediaInfo', id: 510620098
 mas 'MoneyWiz Premium', id: 1012291524
 mas 'Monity', id: 915542151
-mas 'Napkin', id: 581789185
 mas 'Numbers', id: 409203825
 mas 'OmniFocus 2', id: 867299399
 mas 'Omnigraffle 7', id: 1142578753
+mas 'OneDrive', id: 823766827
 mas 'Pages', id: 409201541
 mas 'Paprika', id: 451907568
 mas 'Patterns', id: 429449079
@@ -406,8 +419,7 @@ mas 'Photo Privacy', id: 428752671
 mas 'Pixave', id: 924891282
 mas 'Pixelmator', id: 407963104
 mas 'Pixen', id: 525180431
-#mas 'Remote Desktop', id: 409907375
-#mas 'Sauce', id: 
+mas 'Push Mic Control', id: 1155850258
 mas 'ScreenFloat', id: 414528154
 mas 'Screenium 3', id: 921553264
 mas 'Shopify', id: 1208212036
@@ -416,10 +428,11 @@ mas 'Soulver', id: 413965349
 mas 'Spillo', id: 873245660
 mas 'Telegram', id: 747648890
 mas 'Textual 6', id: 896450579
-mas 'TrackingTime', id: 967777543
 #mas 'Transmit', id: 403388562
+mas 'Trello', id: 1278508951
 mas 'Tweetbot', id: 557168941
-mas 'Ulysses', id: 623795237
+#mas 'Ulysses', id: 623795237 #setapp
 mas 'WhatsApp', id: 1147396723
 mas 'Wire', id: 931134707
+mas 'WireGuard', id: 1451685025
 mas 'Xcode', id: 497799835
