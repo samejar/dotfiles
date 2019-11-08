@@ -7,3 +7,5 @@ code --install-extension mauve.terraform
 code --install-extension visualstudioexptteam.vscodeintellicode
 code --install-extension dotjoshjohnson.xml
 code --install-extension davidanson.vscode-markdownlint
+code --install-extension GitHub.vscode-pull-request-github
+code --install-extension KnisterPeter.vscode-github
