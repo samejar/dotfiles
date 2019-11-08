@@ -1,6 +1,7 @@
 cask_args appdir: '/Applications'
 
 tap 'caskroom/cask'
+tap homebrew/cask-versions
 tap 'github/bootstrap'
 tap 'homebrew/bundle'
 tap 'homebrew/core'
@@ -10,114 +11,292 @@ tap 'homebrew/services'
 tap 'shopify/shopify'
 tap 'wagoodman/dive'
 tap 'aws/tap'
+tap 'wallix/awless'
 
-brew 'ack'
 
-brew 'certbot'
-#brew 'chromedriver'
-brew 'cmake'
+# ### Mac tools vs. GNU tools
+#
+# We generaly prefer GNU tools over preinstalled Mac software tools.
+# For example, we prefer the GNU `sed` command vs. macOS `sed` command.
+#
+# However, we have seen this cause conflicts with macOS software that
+# isn't aware of GNU; therefore we install the dupes in parallel.
+#
+# See:
+#
+#   * https://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/
+#
+# Shell tools
 brew 'coreutils'
-brew 'coreutils'
-brew 'curl'
-brew 'dive'
-brew 'dnsmasq'
-brew 'docker'
-brew 'exiftool'
-brew 'ffmpeg', args: ['with-fdk-aac', 'with-tools', 'with-freetype', 'with-libass', 'with-libvorbis', 'with-libvpx', 'with-x265']
+brew 'moreutils'
 brew 'findutils'
-brew 'fontforge'
-brew 'gifsicle'
-brew 'git'
-brew 'git-crypt'
-brew 'go'
-brew 'graphicsmagick', args: ['webp']
-brew 'grc'
-brew 'guetzli'
-brew 'httpie'
-#brew 'hub'
-brew 'imagemagick', args: ['with-librsvg']
-brew 'jenv'
-brew 'jp2a'
-brew 'jq'
-brew 'lame'
-brew 'libcaca', args: ['with-imlib2']
-brew 'libgit2'
-brew 'mas'
-brew 'netcat'
-brew 'nmap'
-brew 'nodenv'
-brew 'packer'
+brew 'gnu-sed', args: ['with-default-names']
+brew 'cmake'
+brew 'ack'  # https://beyondgrep.com/
+
+brew 'grc'  # Generic colorizer
 brew 'openssl'
-brew 'rbenv'
-brew 'readline'
-brew 'roundup'
-brew 'rsync'
-brew 'ruby-build'
-brew 'spaceman-diff'
-brew 'spark'
 brew 'ssh-copy-id'
 brew 'tmux'
+brew 'roundup' # Unit testing
+
+# Compression
+brew 'zstd'
+brew 'guetzli'
+brew 'zopfli'
 brew 'unrar'
-brew 'webp'
-brew 'wget'
-brew 'x264'
-brew 'xsv'
+
+# Text search
+
+brew 'ripgrep'     # ripgrep is text search
+brew 'jq'          # jq is a lightweight and flexible command-line JSON processor.
+brew 'xsv'         # xsv is for CSV file parsing, and is fast, full featured, and flexible.
+cask 'tad'         # Tad is CSV viewer with features for pivot, search, etc.
+brew 'fzf'
+
+# Functions for use by applications that allow users to edit command lines while typing.
+brew 'readline'
+# TLDR provides simplified and community-driven man pages
+brew 'tldr'
+
+# Terminal
+cask 'kitty'
+
+# Development
+brew 'git'
+brew 'git-crypt'
+# Git Large File Storage
+brew 'git-lfs'
+
+
+
+################
+# Development #
+###############
+
+# Java Development
+# ----------------
+cask 'java'
+cask 'zulu'
+cask 'zulu8'
+cask 'zulu11'
+brew 'jenv'
+brew 'maven'
+brew 'gradle@5'
+# IDEs
+cask 'jetbrains-toolbox'
+cask 'eclipse-java'
+# Tooling
+cask 'yourkit-java-profiler'
+brew 'infer'
+
+# JS Development
+# --------------
+brew 'nodenv'
 brew 'yarn'
-brew 'youtube-dl'
+
+# Go Development
+# --------------
+brew 'go'
+
+# Ruby Development
+# ----------------
+brew 'rbenv'
+brew 'ruby-build'
+
+# Network
+# -------
+brew 'dnsmasq'
+brew 'netcat'
+brew 'nmap'
+# Insomnia: REST client for API testing.
+cask 'insomnia'
 
 # Cloud CLIs
+# ----------
 brew 'awscli'
 brew 'aws-sam-cli'
+brew 'awsebcli'
+brew 'awless'
+cask 'aws-vault'
 brew 'azure-cli'
-
-brew 'mockserver'
 brew 'terraform'
+
+# Containers
+# ----------
+cask 'docker'
+brew 'dive'
+brew 'packer'
+brew 'minikube'
+
+# Ops
+# ---
+# Consul tool for discovering and configuring services in your infrastructure
+brew 'consul'
+# Monit is for managing and monitoring Unix systems.
+brew 'monit'
+brew 'certbot'
+
+# Testing
+# -------
+brew 'mockserver'
+#brew 'chromedriver'
+
+
+
+# Downloaders
+# -----------
+brew 'curl'
+brew 'httpie'
+brew 'httrack'
+brew 'wget', args['with-iri']
+
+# Image tools
+# -----------
+brew 'exiftool'
+brew 'ffmpeg', args: ['with-fdk-aac', 'with-tools', 'with-freetype', 'with-libass', 'with-libvorbis', 'with-libvpx', 'with-x265']
+brew 'gifsicle'
+brew 'graphicsmagick', args: ['webp']
+brew 'imagemagick', args: ['with-librsvg']
+brew 'jp2a'
+#brew 'libcaca', args: ['with-imlib2']
+brew 'webp'
+brew 'graphviz'
+ 
+# A/V tools
+# ---------
+brew 'lame'
+brew 'theora'
+brew 'x264'
+
+
+brew 'fontforge'
+
+#brew 'hub'
+
+#brew 'libgit2'
+brew 'mas'
+
+brew 'googler'
+
+brew 'rsync'
+
+brew 'spaceman-diff'
+brew 'spark'                        # sparklines for your shell
+
+
+
+brew 'youtube-dl'
+
+
+
+
+
 brew 'themekit'
-brew 'maven'
-brew 'zopfli'
+
+
 brew 'zsh'
 
+
+# Browsers
+cask 'brave'
+cask 'firefox'
+cask 'google-chrome'
+cask 'microsoft-edge-dev'
+cask 'choosy'
+
+# Security
 cask '1password'
+cask 'keybase'
+# Pass, a Unix password manager for the command line
+brew 'pass'
+brew 'ykman'
+
+# Network
+cask 'charles'
+cask 'ngrok'
+cask 'little-snitch'
+cask 'postman'
+cask 'tunnelblick'
+cask 'viscosity'
+
+# Chat
+cask 'skype'
+cask 'skype-for-business'
+cask 'slack'
+cask 'telegram'
+
+# Development
+
+
+
+cask 'dotnet'
+
+
+
+
+
+# PlantUML markup text to diagram
+brew 'plantuml'
+
+## Editors
+cask 'sublime-text'
+cask 'atom'
+
+
+# Databases
+# Postgres commmand line interface (CLI) with autocomplete
+brew 'pgcli'
+# SQLite database: self-contained, serverless, zero-configuration, transactional engine.
+brew 'sqlite', link: true
+# Sequel Pro database management application.
+cask 'sequel-pro'
+
+
+cask 'vmware-fusion'
+
+cask 'ghostlab'
+
+cask 'sourcetree'
+cask 'dash'
+
+
 cask 'adobe-creative-cloud'
 cask 'adobe-bridge-cc'
 cask 'airtable'
 cask 'alfred'
 #cask 'amazon-drive'
 cask 'amazon-workspaces'
-cask 'aws-vault'
+
 cask 'appcleaner'
 cask 'appcode'
 #cask 'arq'
-cask 'atom'
 cask 'audio-hijack'
 cask 'bartender'
 cask 'bettertouchtool'
-cask 'box-sync'
-cask 'brave'
+
 #cask 'busycontacts'
+# e-Books
 cask 'calibre'
-cask 'charles'
-cask 'choosy'
+cask 'kindle'
+
+
 cask 'clarify'
 cask 'encryptme'
 cask 'cocktail'
 cask 'coda'
-#cask 'controlplane'
-#cask 'crashplan'
-cask 'dash'
+
 cask 'dayone-cli'
-cask 'dotnet'
+
 cask 'dropbox'
-#cask 'dropzone'
 cask 'duti'
-cask 'eclipse-java'
+
 cask 'evernote'
-cask 'firefox'
+
 cask 'fluid'
 cask 'geekbench'
-cask 'ghostlab'
+
 cask 'google-adwords-editor'
-cask 'google-chrome'
 cask 'google-drive'
 cask 'grammarly'
 cask 'handbrake'
@@ -129,12 +308,6 @@ cask 'imagemin'
 cask 'imageoptim'
 cask 'intel-power-gadget'
 #cask 'intel-xdk-iot'
-cask 'java'
-cask 'jetbrains-toolbox'
-cask 'keybase'
-cask 'kindle'
-cask 'leap-motion'
-cask 'little-snitch'
 cask 'macdown'
 cask 'mailmate'
 #cask 'mapbox-studio'
@@ -142,12 +315,10 @@ cask 'marked'
 #cask 'microsoft-lync'
 cask 'microsoft-office'
 cask 'monodraw'
-cask 'ngrok'
 cask 'notion'
 cask 'openrefine'
 cask 'opera'
 #cask 'paw'
-cask 'postman'
 cask 'powerphotos'
 #cask 'resilio-sync'
 #cask 'robomongo'
@@ -156,31 +327,31 @@ cask 'scansnap-manager-ix500'
 #cask 'screenhero'
 cask 'setapp'
 cask 'sketch'
-cask 'skype'
-cask 'skype-for-business'
-cask 'slack'
 cask 'sonos'
-cask 'sourcetree'
 cask 'steam'
-cask 'sublime-text'
-cask 'telegram'
 cask 'tilemill'
 cask 'toggldesktop'
 cask 'transmission'
 cask 'transmit'
 cask 'tresorit'
 cask 'tripmode'
-cask 'tunnelblick'
 cask 'vagrant'
-cask 'viscosity'
 cask 'vitamin-r'
 cask 'vlc'
-cask 'vmware-fusion'
 cask 'wireshark'
-cask 'yourkit-java-profiler'
-cask 'zulu'
 
+###########################################################################
+# FONTS
+###########################################################################
+cask 'font-fira-code'
+cask 'font-iosevka'
+cask 'font-pt-mono'
+cask 'font-pt-sans'
+cask 'font-pt-serif'
+
+###########################################################################
 # quicklook
+###########################################################################
 cask 'betterzipql'
 cask 'cert-quicklook'
 cask 'qlcolorcode'
