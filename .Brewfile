@@ -1,7 +1,7 @@
 cask_args appdir: '/Applications'
 
 tap 'caskroom/cask'
-tap homebrew/cask-versions
+tap 'homebrew/cask-versions'
 tap 'github/bootstrap'
 tap 'homebrew/bundle'
 tap 'homebrew/core'
@@ -165,7 +165,7 @@ cask 'vmware-fusion'
 cask 'vagrant'
 
 # Web Development
------------------
+# ---------------
 cask 'ghostlab'
 
 # Databases
@@ -208,7 +208,7 @@ brew 'themekit'
 brew 'curl'
 brew 'httpie'
 brew 'httrack'
-brew 'wget', args['with-iri']
+brew 'wget', args: ['with-iri']
 
 # Image tools
 # -----------
@@ -301,7 +301,8 @@ cask 'vlc'
 # e-Books
 # -------
 cask 'calibre'
-cask 'kindleyu
+cask 'kindle'
+
 # macOS utilities
 # ---------------
 cask 'appcleaner'
