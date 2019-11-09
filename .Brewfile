@@ -118,13 +118,19 @@ cask 'jetbrains-toolbox'
 cask 'openrefine'
 cask 'rstudio'
 
+# Testing
+# -------
+cask 'soapui'
+
 # Text Editors & Doc Tooling
 # --------------------------
 cask 'sublime-text'
 cask 'atom'
-cask 'macdown'
+#cask 'macdown'
+cask 'mark-text'
 # PlantUML markup text to diagram
 brew 'plantuml'
+cask 'staruml'
 
 # Network
 # -------
@@ -170,6 +176,7 @@ brew 'pgcli'
 brew 'sqlite', link: true
 # Sequel Pro database management application.
 cask 'sequel-pro'
+cask 'dbeaver-community'
 #cask 'robomongo'
 
 # Ops
@@ -259,6 +266,7 @@ cask 'encryptme'
 cask 'expressvpn'
 cask 'yubico-authenticator'
 cask 'yubico-yubikey-manager'
+#cask 'avast-security'
 
 # Network
 # -------
@@ -293,8 +301,7 @@ cask 'vlc'
 # e-Books
 # -------
 cask 'calibre'
-cask 'kindle'
-
+cask 'kindleyu
 # macOS utilities
 # ---------------
 cask 'appcleaner'
@@ -305,10 +312,12 @@ cask 'cocktail'
 cask 'duti'
 cask 'hazel'
 #cask 'tripmode' #setapp
+cask 'the-unarchiver'
 
-# Hardware Applications
+# Hardware / Drivers
 # ---------------------
 #cask 'scansnap-manager-ix500' #Replaced by ScanSnap Home
+cask 'netgear-switch-discovery-tool'
 
 # File Sync & Backup
 # ------------------
@@ -318,6 +327,7 @@ cask 'dropbox'
 cask 'google-drive'
 #cask 'resilio-sync'
 brew 'rsync'
+cask 'synology-drive'
 cask 'transmission'
 cask 'transmit'
 #cask 'tresorit'
@@ -428,9 +438,10 @@ mas 'Soulver', id: 413965349
 mas 'Spillo', id: 873245660
 mas 'Telegram', id: 747648890
 mas 'Textual 6', id: 896450579
+mas 'Things 3', id: 904280696
 #mas 'Transmit', id: 403388562
 mas 'Trello', id: 1278508951
-mas 'Tweetbot', id: 557168941
+mas 'Tweetbot 3', id: 1384080005
 #mas 'Ulysses', id: 623795237 #setapp
 mas 'WhatsApp', id: 1147396723
 mas 'Wire', id: 931134707
