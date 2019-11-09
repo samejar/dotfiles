@@ -2,7 +2,6 @@ cask_args appdir: '/Applications'
 
 tap 'caskroom/cask'
 tap 'homebrew/cask-versions'
-tap 'github/bootstrap'
 tap 'homebrew/bundle'
 tap 'homebrew/core'
 tap 'homebrew/dev-tools'
@@ -30,7 +29,7 @@ tap 'wallix/awless'
 brew 'coreutils'
 brew 'moreutils'
 brew 'findutils'
-brew 'gnu-sed', args: ['with-default-names']
+brew 'gnu-sed'
 brew 'cmake'
 brew 'ack'  # https://beyondgrep.com/
 
