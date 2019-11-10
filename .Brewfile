@@ -110,9 +110,11 @@ brew 'git'
 brew 'git-crypt'
 # Git Large File Storage
 brew 'git-lfs'
+brew 'o2sh'
 brew 'libgit2'
 brew 'spaceman-diff'
 cask 'fork'
+cask 'gitup'
 cask 'github'
 
 # IDEs
@@ -371,6 +373,7 @@ cask 'font-iosevka'
 cask 'font-pt-mono'
 cask 'font-pt-sans'
 cask 'font-pt-serif'
+cask 'font-victor-mono'
 
 #############
 # Quicklook #
