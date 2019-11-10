@@ -255,7 +255,7 @@ cask 'setapp'
 cask 'brave'
 cask 'firefox'
 cask 'google-chrome'
-cask 'microsoft-edge-dev'
+cask 'microsoft-edge-beta'
 cask 'opera'
 cask 'choosy'
 cask 'fluid'
@@ -315,7 +315,7 @@ cask 'alfred'
 #cask 'bartender' #setapp
 #cask 'bettertouchtool' #setapp
 cask 'cocktail'
-cask 'duti'
+brew 'duti'
 cask 'hazel'
 #cask 'tripmode' #setapp
 cask 'the-unarchiver'
@@ -350,7 +350,7 @@ cask 'slite'
 
 # Project Management
 # ------------------
-brew 'clickup'
+cask 'clickup'
 
 # Misc
 # ----
@@ -359,7 +359,7 @@ cask 'geekbench'
 cask 'google-adwords-editor'
 cask 'intel-power-gadget'
 cask 'marked'
-cask 'toggldesktop'
+cask 'toggl'
 cask 'tilemill'
 
 
