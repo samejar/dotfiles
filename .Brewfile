@@ -110,7 +110,7 @@ brew 'git'
 brew 'git-crypt'
 # Git Large File Storage
 brew 'git-lfs'
-brew 'o2sh'
+brew 'onefetch'
 brew 'libgit2'
 brew 'spaceman-diff'
 cask 'fork'
@@ -170,6 +170,11 @@ brew 'minikube'
 
 cask 'vmware-fusion'
 cask 'vagrant'
+
+# Kafka
+# -----
+brew 'kafka'
+brew 'kafkacat'
 
 # Web Development
 # ---------------
