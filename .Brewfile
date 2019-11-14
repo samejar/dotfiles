@@ -12,6 +12,7 @@ tap 'shopify/shopify'
 tap 'wagoodman/dive'
 tap 'aws/tap'
 tap 'wallix/awless'
+tap 'versent/homebrew-taps'
 
 
 # ### Mac tools vs. GNU tools
@@ -39,6 +40,8 @@ brew 'openssl'
 brew 'ssh-copy-id'
 brew 'tmux'
 brew 'roundup' # Unit testing
+brew 'exa'
+brew 'eg-examples'
 
 brew 'zsh'
 
@@ -110,7 +113,7 @@ brew 'git'
 brew 'git-crypt'
 # Git Large File Storage
 brew 'git-lfs'
-brew 'o2sh'
+brew 'onefetch'
 brew 'libgit2'
 brew 'spaceman-diff'
 cask 'fork'
@@ -158,6 +161,7 @@ brew 'aws-sam-cli'
 brew 'awsebcli'
 brew 'awless'
 cask 'aws-vault'
+brew 'saml2aws'
 brew 'azure-cli'
 brew 'terraform'
 
@@ -254,7 +258,7 @@ cask 'setapp'
 
 # Browsers
 # --------
-cask 'brave'
+cask 'brave-browser'
 cask 'firefox'
 cask 'google-chrome'
 cask 'microsoft-edge-beta'
@@ -288,6 +292,7 @@ cask 'skype'
 #cask 'skype-for-business'
 cask 'slack'
 cask 'telegram'
+cask 'signal'
 
 # Graphics Software
 # -----------------
