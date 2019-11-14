@@ -131,6 +131,7 @@ cask 'rstudio'
 # Testing
 # -------
 cask 'soapui'
+brew 'wrk'
 
 # Text Editors & Doc Tooling
 # --------------------------
