@@ -6,11 +6,19 @@ Stream events:
 
     eb events --follow
 
+Use of a named environment:
+
+    eb events kitt-staging-app-env --follow
+
 # Health
 
 View live health:
 
     eb health --refresh
+
+Use of a named environment:
+
+    eb health kitt-staging-app-env --refresh
 
 # Status
 
