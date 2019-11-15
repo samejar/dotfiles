@@ -12,4 +12,9 @@ code --install-extension davidanson.vscode-markdownlint
 code --install-extension GitHub.vscode-pull-request-github
 code --install-extension KnisterPeter.vscode-github
 code --install-extension rokoroku.vscode-theme-darcula
-
+code --install-extension mtxr.sqltools
+code --install-extension Pivotal.vscode-manifest-yaml
+code --install-extension ms-azuretools.vscode-docker
+code --install-extension eamodio.gitlens
+code --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
+code --install-extension p1c2u.docker-compose
