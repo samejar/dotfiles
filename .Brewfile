@@ -77,12 +77,12 @@ cask 'kitty'
 #cask 'zulu'
 #cask 'zulu8'
 #cask 'zulu11'
-cask 'adoptopenjdk/openjdk/adoptopenjdk8'
-cask 'adoptopenjdk/openjdk/adoptopenjdk11'
-cask 'adoptopenjdk/openjdk/adoptopenjdk14'
+cask 'adoptopenjdk8'
+cask 'adoptopenjdk11'
+cask 'adoptopenjdk14'
 cask 'adoptopenjdk11-openj9'
 cask 'adoptopenjdk14-openj9'
-cask 'graalvm/tap/graalvm-ce'
+cask 'graalvm-ce'
 brew 'jenv'
 brew 'maven'
 brew 'gradle@6'
@@ -155,6 +155,7 @@ cask 'ngrok'
 cask 'insomnia'
 #cask 'paw' #Setapp
 cask 'postman'
+brew 'socat'
 
 # Cloud CLIs
 # ----------
@@ -171,8 +172,11 @@ brew 'terraform'
 # ----------------
 cask 'docker'
 brew 'dive'
+brew 'aquasecurity/trivy/trivy'
 brew 'packer'
 brew 'minikube'
+brew 'docker-credential-helper-ecr'
+
 
 cask 'vmware-fusion'
 cask 'vagrant'
