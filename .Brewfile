@@ -73,18 +73,19 @@ cask 'kitty'
 
 # Java Development
 # ----------------
-cask 'java'
-cask 'zulu'
-cask 'zulu8'
-cask 'zulu11'
+#cask 'java'
+#cask 'zulu'
+#cask 'zulu8'
+#cask 'zulu11'
 cask 'adoptopenjdk/openjdk/adoptopenjdk8'
 cask 'adoptopenjdk/openjdk/adoptopenjdk11'
+cask 'adoptopenjdk/openjdk/adoptopenjdk14'
 cask 'adoptopenjdk11-openj9'
-cask 'adoptopenjdk13-openj9'
+cask 'adoptopenjdk14-openj9'
 cask 'graalvm/tap/graalvm-ce'
 brew 'jenv'
 brew 'maven'
-brew 'gradle@5'
+brew 'gradle@6'
 # Tooling
 brew 'infer'
 
@@ -241,7 +242,7 @@ brew 'graphviz'
 cask 'imagealpha'
 cask 'imagemin'
 cask 'imageoptim'
- 
+
 # A/V tools
 # ---------
 brew 'lame'
@@ -412,7 +413,7 @@ mas 'Better', id: 1121192229
 mas 'Blackmagic Disk Speed Test', id: 425264550
 mas 'Cinemagraph Pro', id: 777874532
 mas 'CodeBox', id: 412536790
-mas 'Coinverter', id: 926121450 
+mas 'Coinverter', id: 926121450
 mas 'DaisyDisk', id: 411643860
 mas 'Day One', id: 1055511498
 cask 'dayone-cli'
