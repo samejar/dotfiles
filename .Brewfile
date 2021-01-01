@@ -42,6 +42,7 @@ brew 'tmux'
 brew 'roundup' # Unit testing
 brew 'exa'
 brew 'eg-examples'
+brew 'mosh'
 
 brew 'zsh'
 
@@ -66,6 +67,10 @@ brew 'tldr'
 
 # Terminal
 cask 'kitty'
+
+# Filesystem support
+cask `macfuse`
+brew 'ext4fuse'
 
 ###############
 # Development #
@@ -117,6 +122,7 @@ brew 'git-lfs'
 brew 'onefetch'
 brew 'libgit2'
 brew 'spaceman-diff'
+brew 'grv'
 cask 'fork'
 cask 'gitup'
 cask 'github'
