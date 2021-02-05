@@ -370,21 +370,22 @@ cask 'mailmate'
 cask 'mailspring'
 cask 'microsoft-office'
 cask 'notion'
-cask 'slite'
+#cask 'slite'
+cask 'standard-notes'
 
 # Project Management
 # ------------------
 cask 'clickup'
 
-# Misc
+# Misc
 # ----
 #cask 'busycontacts'
 cask 'geekbench'
-cask 'google-adwords-editor'
-cask 'intel-power-gadget'
-cask 'marked'
-cask 'toggl'
-cask 'tilemill'
+#cask 'google-adwords-editor'
+#cask 'intel-power-gadget'
+#cask 'marked'
+#cask 'toggl'
+#cask 'tilemill'
 
 
 #########
