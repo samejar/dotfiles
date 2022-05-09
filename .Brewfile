@@ -7,8 +7,8 @@ tap 'homebrew/bundle'
 tap 'homebrew/core'
 tap 'homebrew/formula-analytics'
 tap 'homebrew/services'
-tap 'AdoptOpenJDK/openjdk'
-tap 'shopify/shopify'
+#tap 'AdoptOpenJDK/openjdk'
+#tap 'shopify/shopify'
 tap 'wagoodman/dive'
 tap 'aws/tap'
 tap 'wallix/awless'
@@ -153,7 +153,7 @@ cask 'sublime-text'
 cask 'mark-text'
 # PlantUML markup text to diagram
 brew 'plantuml'
-cask 'staruml'
+#cask 'staruml'
 
 # Network
 # -------
@@ -204,7 +204,7 @@ brew 'kafkacat'
 
 # Web Development
 # ---------------
-cask 'ghostlab'
+#cask 'ghostlab'
 
 # Databases
 # ---------
@@ -214,13 +214,13 @@ brew 'pgcli'
 brew 'sqlite', link: true
 # Sequel Pro database management application.
 #cask 'sequel-pro'
-cask 'dbeaver-community'
+#cask 'dbeaver-community'
 #cask 'robomongo'
 
 # Ops
 # ---
 # Consul tool for discovering and configuring services in your infrastructure
-brew 'consul'
+# brew 'consul'
 # Monit is for managing and monitoring Unix systems.
 brew 'monit'
 brew 'certbot'
@@ -232,8 +232,8 @@ brew 'mockserver'
 
 # Utilities
 # ---------
-#cask 'dash'
-brew 'themekit'
+#cask 'dash' #setapp
+#brew 'themekit' #Shopify tool
 
 
 #############
@@ -285,24 +285,24 @@ cask 'setapp'
 
 # Browsers
 # --------
-cask 'brave-browser'
+#cask 'brave-browser'
 cask 'firefox'
 #cask 'google-chrome'
-cask 'microsoft-edge'
+#cask 'microsoft-edge'
 cask 'vivaldi'
-cask 'choosy'
-cask 'fluid'
+#cask 'choosy' #Browserfairy
+#cask 'fluid'
 
 # Security
 # --------
 brew 'cloudflared'
 cask '1password'
-cask 'authy'
+# cask 'authy'
 cask 'keybase'
 # Pass, a Unix password manager for the command line
 brew 'pass'
 brew 'ykman'
-cask 'encryptme'
+# cask 'encryptme'
 cask 'expressvpn'
 cask 'cloudflare-warp'
 cask 'yubico-authenticator'
@@ -487,7 +487,7 @@ mas 'Photo Privacy', id: 428752671
 mas 'Reeder', id: 1529448980
 #mas 'ScreenFloat', id: 414528154
 #mas 'Screenium 3', id: 921553264
-mas 'Shopify', id: 1208212036
+#mas 'Shopify', id: 1208212036
 mas 'Shuttie', id: 415184888
 mas 'Soulver', id: 413965349
 mas 'Spillo', id: 873245660
