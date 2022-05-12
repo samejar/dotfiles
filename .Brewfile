@@ -11,11 +11,11 @@ tap 'homebrew/services'
 #tap 'shopify/shopify'
 tap 'wagoodman/dive'
 tap 'aws/tap'
-tap 'wallix/awless'
 tap 'versent/homebrew-taps'
 tap 'tektoncd/tools'
-tap 'instrumenta/instrumenta'
-
+tap 'mdogan/zulu'
+tap 'aquasecurity/trivy'
+tap 'homebrew-ffmpeg/ffmpeg'
 
 # ### Mac tools vs. GNU tools
 #
@@ -52,7 +52,8 @@ brew 'zsh'
 brew 'zstd'
 brew 'guetzli'
 brew 'zopfli'
-brew 'unrar'
+brew 'unar'
+brew 'betterzip'
 
 # Text search
 
@@ -173,7 +174,6 @@ brew 'socat'
 brew 'awscli'
 brew 'aws-sam-cli'
 brew 'awsebcli'
-brew 'awless'
 cask 'aws-vault'
 brew 'saml2aws'
 brew 'azure-cli'
@@ -200,7 +200,7 @@ brew 'conftest'
 # Kafka
 # -----
 brew 'kafka'
-brew 'kafkacat'
+brew 'kcat'
 
 # Web Development
 # ---------------
@@ -246,15 +246,14 @@ brew 'mockserver'
 brew 'curl'
 brew 'httpie'
 brew 'httrack'
-brew 'wget', args: ['with-iri']
+brew 'wget'
 
 # Image tools
 # -----------
 brew 'exiftool'
-brew 'ffmpeg', args: ['with-fdk-aac', 'with-tools', 'with-freetype', 'with-libass', 'with-libvorbis', 'with-libvpx', 'with-x265']
+brew 'homebrew-ffmpeg/ffmpeg/ffmpeg', args: ['with-fdk-aac', 'with-tools', 'with-freetype', 'with-libass', 'with-libvorbis', 'with-libvpx', 'with-x265']
 brew 'gifsicle'
-brew 'graphicsmagick', args: ['webp']
-brew 'imagemagick', args: ['with-librsvg']
+brew 'graphicsmagick'
 brew 'jp2a'
 #brew 'libcaca', args: ['with-imlib2']
 brew 'webp'
@@ -418,7 +417,7 @@ cask 'font-victor-mono'
 #############
 # Quicklook #
 #############
-cask 'betterzipql'
+# See: https://github.com/sindresorhus/quick-look-plugins
 cask 'cert-quicklook'
 cask 'qlcolorcode'
 cask 'qlimagesize'
@@ -429,6 +428,7 @@ cask 'qlvideo'
 cask 'quicklook-csv'
 cask 'quicklook-json'
 cask 'suspicious-package'
+brew 'apparency'
 cask 'webpquicklook'
 
 #mas 'Agenda', id: 1287445660
@@ -465,14 +465,15 @@ mas 'Apple Configurator 2', id: 1037126344
 mas 'Bear', id: 1091189122
 mas 'Better', id: 1121192229
 mas 'Blackmagic Disk Speed Test', id: 425264550
+mas 'Boop', id: 1518425043
 #mas 'Calendar 366 II ', id: 1265895169
 mas 'Cinemagraph Pro', id: 777874532
+mas 'Codye', id: 1516894961
 mas 'Coinverter', id: 926121450
 mas 'Craft', id: 1487937127
 mas 'DaisyDisk', id: 411643860
 mas 'Darkroom', id: 953286746
 mas 'Day One', id: 1055511498
-cask 'dayone-cli'
 mas 'Deckset', id: 847496013
 mas 'Deliveries', id: 924726344
 mas 'Draft Control', id: 644346785
@@ -480,33 +481,42 @@ mas 'Drafts', id: 1435957248
 mas 'GoodNotes', id: 1444383602
 mas 'Hush Nag Blocker', id: 1544743900
 mas 'iA Writer', id: 775737590
+mas 'Instapaper Save', id: 1481302432   
 mas 'Jira Cloud', id: 1475897096
 mas 'Keep It', id: 1272768911
 mas 'Keynote', id: 409183694
 mas 'Klib', id: 1196268448
 mas 'Labels and Databases', id: 922445776
-mas 'macOS Server', id: 883878097
 mas 'Magnet', id: 441258766
+mas 'MarginNote 3', id: 1423522373
 mas 'MediaInfo', id: 510620098
+mas 'Mela', id: 1568924476
+mas 'MusicHarbor', id: 1440405750
 mas 'Numbers', id: 409203825
 mas 'Omnigraffle 7', id: 1142578753
 mas 'OneDrive', id: 823766827
+mas 'OTP Auth', id: 1471867429 
 mas 'Pages', id: 409201541
 mas 'Paprika', id: 1303222628
 mas 'Patterns', id: 429449079
 mas 'Photo Privacy', id: 428752671
-mas 'PiPifier', id: 1160374471
+mas 'Pins', id: 1547106997
+mas 'RAW Power', id: 1157116444 
 mas 'Reeder', id: 1529448980
 mas 'Shuttie', id: 415184888
 mas 'Soulver', id: 413965349
 mas 'Spillo', id: 873245660
+mas 'Super Agent', id: 1568262835
 mas 'Tab Space', id: 1473726602
 mas 'Telegram', id: 747648890
 mas 'Textual', id: 1262957439
 mas 'Things', id: 904280696
 mas 'Todoist', id: 585829637
+mas 'TickTick', id: 966085870   
 mas 'Trello', id: 1278508951
+mas 'UTM', id: 1538878817
 mas 'WireGuard', id: 1451685025
+mas 'xSearch', id: 1579902068
 mas 'Xcode', id: 497799835
 
 #################
