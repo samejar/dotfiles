@@ -324,7 +324,7 @@ cask 'wireshark'
 cask 'slack'
 #cask 'telegram' #mas now
 cask 'signal'
-cash 'around'
+cask 'around'
 
 # Graphics Software
 # -----------------
