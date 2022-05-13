@@ -343,7 +343,7 @@ cask 'powerphotos'
 cask 'vlc'
 
 # Video/Audio editing
----------------
+# -------------------
 cask 'descript'
 
 # e-Books
