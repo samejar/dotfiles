@@ -182,6 +182,7 @@ brew 'terraform'
 # Containers & VMs
 # ----------------
 #cask 'docker'
+brew 'nerdctl'
 brew 'dive'
 brew 'aquasecurity/trivy/trivy'
 brew 'packer'
@@ -194,6 +195,7 @@ brew 'tektoncd/tools/tektoncd-cli'
 
 #cask 'vmware-fusion'
 #cask 'vagrant'
+cask 'parallels'
 
 brew 'conftest'
 
@@ -315,13 +317,14 @@ cask 'tunnelblick'
 cask 'viscosity'
 cask 'wireshark'
 
-# Chat
-# ----
+# Chat / Video
+# ------------
 #cask 'skype'
 #cask 'skype-for-business'
 cask 'slack'
 #cask 'telegram' #mas now
 cask 'signal'
+cash 'around'
 
 # Graphics Software
 # -----------------
@@ -338,6 +341,10 @@ cask 'handbrake'
 cask 'iina'
 cask 'powerphotos'
 cask 'vlc'
+
+# Video/Audio editing
+---------------
+cask 'descript'
 
 # e-Books
 # -------
@@ -387,10 +394,15 @@ cask 'notion'
 #cask 'slite'
 cask 'obsidian'
 cask 'standard-notes'
+cask 'vale-server'
 
 # Project Management
 # ------------------
 cask 'clickup'
+
+# Games
+# -----
+cask 'nvidia-geforce-now'
 
 # Misc
 # ----
