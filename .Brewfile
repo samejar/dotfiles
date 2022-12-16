@@ -16,6 +16,8 @@ tap 'tektoncd/tools'
 tap 'mdogan/zulu'
 tap 'aquasecurity/trivy'
 tap 'homebrew-ffmpeg/ffmpeg'
+tap 'anchore/syft'
+tap 'tap anchore/grype'
 
 # ### Mac tools vs. GNU tools
 #
@@ -192,6 +194,8 @@ brew 'docker-credential-helper-ecr'
 brew 'k9s'
 brew 'helm'
 brew 'tektoncd/tools/tektoncd-cli'
+brew 'syft'
+brew 'grype'
 
 #cask 'vmware-fusion'
 #cask 'vagrant'
