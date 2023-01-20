@@ -15,6 +15,7 @@ tap 'versent/homebrew-taps'
 tap 'tektoncd/tools'
 tap 'mdogan/zulu'
 tap 'aquasecurity/trivy'
+tap 'anchore/grype'
 tap 'homebrew-ffmpeg/ffmpeg'
 tap 'anchore/syft'
 tap 'tap anchore/grype'
@@ -115,6 +116,10 @@ brew 'ruby-build'
 # ----------------
 brew 'pyenv'
 
+# Rust Development
+# ----------------
+brew 'rust'
+
 # .Net Development
 # ----------------
 cask 'dotnet'
@@ -187,6 +192,7 @@ brew 'terraform'
 brew 'nerdctl'
 brew 'dive'
 brew 'aquasecurity/trivy/trivy'
+brew 'grype'
 brew 'packer'
 brew 'whalebrew'
 #brew 'minikube'
@@ -212,8 +218,11 @@ brew 'kcat'
 # ---------------
 #cask 'ghostlab'
 
-# Databases
+# Data
 # ---------
+
+# Databases & clients
+
 # Postgres commmand line interface (CLI) with autocomplete
 brew 'pgcli'
 # SQLite database: self-contained, serverless, zero-configuration, transactional engine.
@@ -222,6 +231,9 @@ brew 'sqlite', link: true
 #cask 'sequel-pro'
 #cask 'dbeaver-community'
 #cask 'robomongo'
+
+# Data Analysis
+brew 'datasette'
 
 # Ops
 # ---
@@ -429,6 +441,8 @@ cask 'font-pt-mono'
 cask 'font-pt-sans'
 cask 'font-pt-serif'
 cask 'font-victor-mono'
+cask 'font-mona-sans'
+cask 'font-hubot-sans'
 
 #############
 # Quicklook #
@@ -494,6 +508,7 @@ mas 'Deckset', id: 847496013
 mas 'Deliveries', id: 924726344
 mas 'Draft Control', id: 644346785
 mas 'Drafts', id: 1435957248
+mas 'Fantastical', id: 975937182?
 mas 'GoodNotes', id: 1444383602
 mas 'Hush Nag Blocker', id: 1544743900
 mas 'iA Writer', id: 775737590
@@ -524,9 +539,10 @@ mas 'Soulver', id: 413965349
 mas 'Spillo', id: 873245660
 mas 'Super Agent', id: 1568262835
 mas 'Tab Space', id: 1473726602
-mas 'Telegram', id: 747648890
+#mas 'Telegram', id: 747648890
 mas 'Textual', id: 1262957439
 mas 'Things', id: 904280696
+mas 'Timery', id: 1425368544
 mas 'Todoist', id: 585829637
 mas 'TickTick', id: 966085870   
 mas 'Trello', id: 1278508951
