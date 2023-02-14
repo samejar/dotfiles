@@ -201,7 +201,7 @@ brew 'docker-credential-helper-ecr'
 brew 'k9s'
 brew 'helm'
 brew 'tektoncd/tools/tektoncd-cli'
-
+brew 'container-diff'
 
 #cask 'vmware-fusion'
 #cask 'vagrant'
@@ -443,6 +443,8 @@ cask 'font-pt-serif'
 cask 'font-victor-mono'
 cask 'font-mona-sans'
 cask 'font-hubot-sans'
+cask 'font-jetbrains-mono'
+
 
 #############
 # Quicklook #
