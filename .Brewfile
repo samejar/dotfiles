@@ -445,6 +445,14 @@ cask 'font-mona-sans'
 cask 'font-hubot-sans'
 cask 'font-jetbrains-mono'
 
+# Design / Sketch fonts
+cask 'font-architects-daughter'
+cask 'font-flow-block'
+cask 'font-flow-circular'
+cask 'font-flow-rounded'
+cask 'font-redacted'
+cask 'font-redacted-script'
+
 
 #############
 # Quicklook #
