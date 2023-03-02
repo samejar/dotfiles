@@ -185,6 +185,7 @@ cask 'aws-vault'
 brew 'saml2aws'
 brew 'azure-cli'
 brew 'terraform'
+brew 'terraformer'
 
 # Containers & VMs
 # ----------------
