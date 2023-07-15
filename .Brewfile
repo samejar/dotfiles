@@ -4,7 +4,6 @@ tap 'homebrew/cask-versions'
 tap 'homebrew/cask-fonts'
 tap 'homebrew/cask-drivers'
 tap 'homebrew/bundle'
-tap 'homebrew/core'
 tap 'homebrew/formula-analytics'
 tap 'homebrew/services'
 #tap 'AdoptOpenJDK/openjdk'
@@ -243,6 +242,7 @@ brew 'datasette'
 # Monit is for managing and monitoring Unix systems.
 brew 'monit'
 brew 'certbot'
+brew 'infracost'
 
 # Testing
 # -------
@@ -339,7 +339,7 @@ cask 'wireshark'
 #cask 'skype'
 #cask 'skype-for-business'
 cask 'slack'
-#cask 'telegram' #mas now
+#cask 'telegram' ##mas now
 cask 'signal'
 cask 'around'
 
@@ -367,6 +367,7 @@ cask 'descript'
 # -------
 cask 'calibre'
 #cask 'kindle'
+cask 'sigil'
 
 # macOS utilities
 # ---------------
@@ -379,6 +380,8 @@ brew 'duti'
 cask 'hazel'
 #cask 'tripmode' #setapp
 cask 'the-unarchiver'
+cask 'flameshot'
+cask 'stats'
 
 # Hardware / Drivers
 # ---------------------
@@ -393,7 +396,7 @@ cask 'netgear-switch-discovery-tool'
 #cask 'google-drive'
 cask 'resilio-sync'
 brew 'rsync'
-#cask 'synology-drive'
+cask 'synology-drive'
 cask 'transmission'
 cask 'transmit'
 cask 'backblaze'
@@ -419,7 +422,7 @@ cask 'clickup'
 
 # Games
 # -----
-cask 'nvidia-geforce-now'
+#cask 'nvidia-geforce-now'
 
 # Misc
 # ----
@@ -472,95 +475,97 @@ cask 'suspicious-package'
 brew 'apparency'
 cask 'webpquicklook'
 
-#mas 'Agenda', id: 1287445660
-#mas 'Annotate', id: 918207447
-#mas 'Be Focused', id: 973134470
-#mas 'CodeBox', id: 412536790
-#mas 'Dropzone', id: 695406827
-#mas 'Fantastical 2', id: 695406827
-#mas 'GAGet', id: 968487158
-#mas 'Glimpses', id: 637565340
-#mas 'iMovie', id: 408981434
-#mas 'Intensify', id: 716854513
-#mas 'Lire', id: 1482527526
-#mas 'MoneyWiz Premium', id: 1012291524
-#mas 'Monity', id: 915542151
-#mas 'OmniFocus 2', id: 867299399
-#mas 'Pixave', id: 924891282
-#mas 'Pixelmator', id: 407963104
-#mas 'Pixen', id: 525180431
-#mas 'Push Mic Control', id: 1155850258
-#mas 'ScreenFloat', id: 414528154
-#mas 'Screenium 3', id: 921553264
-#mas 'Shopify', id: 1208212036
-#mas 'Transmit', id: 403388562
-#mas 'Tweetbot 3', id: 1384080005
-#mas 'Ulysses', id: 623795237 #setapp
-#mas 'WhatsApp', id: 1147396723
-#mas 'Wire', id: 931134707
+# All MAS commented out
+# TODO Update or split file
+##mas 'Agenda', id: 1287445660
+##mas 'Annotate', id: 918207447
+##mas 'Be Focused', id: 973134470
+##mas 'CodeBox', id: 412536790
+##mas 'Dropzone', id: 695406827
+##mas 'Fantastical 2', id: 695406827
+##mas 'GAGet', id: 968487158
+##mas 'Glimpses', id: 637565340
+##mas 'iMovie', id: 408981434
+##mas 'Intensify', id: 716854513
+##mas 'Lire', id: 1482527526
+##mas 'MoneyWiz Premium', id: 1012291524
+##mas 'Monity', id: 915542151
+##mas 'OmniFocus 2', id: 867299399
+##mas 'Pixave', id: 924891282
+##mas 'Pixelmator', id: 407963104
+##mas 'Pixen', id: 525180431
+##mas 'Push Mic Control', id: 1155850258
+##mas 'ScreenFloat', id: 414528154
+##mas 'Screenium 3', id: 921553264
+##mas 'Shopify', id: 1208212036
+##mas 'Transmit', id: 403388562
+##mas 'Tweetbot 3', id: 1384080005
+##mas 'Ulysses', id: 623795237 #setapp
+##mas 'WhatsApp', id: 1147396723
+##mas 'Wire', id: 931134707
 
-mas 'Affinity Designer', id: 824171161
-mas 'Affinity Photo', id: 824183456
-mas 'Affinity Publisher', id: 881418622
-mas 'Apple Configurator 2', id: 1037126344
-mas 'Bear', id: 1091189122
-mas 'Better', id: 1121192229
-mas 'Blackmagic Disk Speed Test', id: 425264550
-mas 'Boop', id: 1518425043
-#mas 'Calendar 366 II ', id: 1265895169
-mas 'Cinemagraph Pro', id: 777874532
-mas 'Codye', id: 1516894961
-mas 'Coinverter', id: 926121450
-mas 'Craft', id: 1487937127
-mas 'DaisyDisk', id: 411643860
-mas 'Darkroom', id: 953286746
-mas 'Day One', id: 1055511498
-mas 'Deckset', id: 847496013
-mas 'Deliveries', id: 924726344
-mas 'Draft Control', id: 644346785
-mas 'Drafts', id: 1435957248
-mas 'Fantastical', id: 975937182?
-mas 'GoodNotes', id: 1444383602
-mas 'Hush Nag Blocker', id: 1544743900
-mas 'iA Writer', id: 775737590
-mas 'Instapaper Save', id: 1481302432   
-mas 'Jira Cloud', id: 1475897096
-mas 'Keep It', id: 1272768911
-mas 'Keynote', id: 409183694
-mas 'Klib', id: 1196268448
-mas 'Labels and Databases', id: 922445776
-mas 'Magnet', id: 441258766
-mas 'MarginNote 3', id: 1423522373
-mas 'MediaInfo', id: 510620098
-mas 'Mela', id: 1568924476
-mas 'MusicHarbor', id: 1440405750
-mas 'Numbers', id: 409203825
-mas 'Omnigraffle 7', id: 1142578753
-mas 'OneDrive', id: 823766827
-mas 'OTP Auth', id: 1471867429 
-mas 'Pages', id: 409201541
-mas 'Paprika', id: 1303222628
-mas 'Patterns', id: 429449079
-mas 'Photo Privacy', id: 428752671
-mas 'Pins', id: 1547106997
-mas 'RAW Power', id: 1157116444 
-mas 'Reeder', id: 1529448980
-mas 'Shuttie', id: 415184888
-mas 'Soulver', id: 413965349
-mas 'Spillo', id: 873245660
-mas 'Super Agent', id: 1568262835
-mas 'Tab Space', id: 1473726602
-#mas 'Telegram', id: 747648890
-mas 'Textual', id: 1262957439
-mas 'Things', id: 904280696
-mas 'Timery', id: 1425368544
-mas 'Todoist', id: 585829637
-mas 'TickTick', id: 966085870   
-mas 'Trello', id: 1278508951
-mas 'UTM', id: 1538878817
-mas 'WireGuard', id: 1451685025
-mas 'xSearch', id: 1579902068
-mas 'Xcode', id: 497799835
+#mas 'Affinity Designer', id: 824171161
+#mas 'Affinity Photo', id: 824183456
+#mas 'Affinity Publisher', id: 881418622
+#mas 'Apple Configurator 2', id: 1037126344
+#mas 'Bear', id: 1091189122
+#mas 'Better', id: 1121192229
+#mas 'Blackmagic Disk Speed Test', id: 425264550
+#mas 'Boop', id: 1518425043
+##mas 'Calendar 366 II ', id: 1265895169
+#mas 'Cinemagraph Pro', id: 777874532
+#mas 'Codye', id: 1516894961
+#mas 'Coinverter', id: 926121450
+#mas 'Craft', id: 1487937127
+#mas 'DaisyDisk', id: 411643860
+#mas 'Darkroom', id: 953286746
+#mas 'Day One', id: 1055511498
+#mas 'Deckset', id: 847496013
+#mas 'Deliveries', id: 924726344
+#mas 'Draft Control', id: 644346785
+#mas 'Drafts', id: 1435957248
+#mas 'Fantastical', id: 975937182
+#mas 'GoodNotes', id: 1444383602
+#mas 'Hush Nag Blocker', id: 1544743900
+#mas 'iA Writer', id: 775737590
+#mas 'Instapaper Save', id: 1481302432   
+#mas 'Jira Cloud', id: 1475897096
+#mas 'Keep It', id: 1272768911
+#mas 'Keynote', id: 409183694
+#mas 'Klib', id: 1196268448
+#mas 'Labels and Databases', id: 922445776
+#mas 'Magnet', id: 441258766
+#mas 'MarginNote 3', id: 1423522373
+#mas 'MediaInfo', id: 510620098
+#mas 'Mela', id: 1568924476
+#mas 'MusicHarbor', id: 1440405750
+#mas 'Numbers', id: 409203825
+#mas 'Omnigraffle 7', id: 1142578753
+#mas 'OneDrive', id: 823766827
+#mas 'OTP Auth', id: 1471867429 
+#mas 'Pages', id: 409201541
+#mas 'Paprika', id: 1303222628
+#mas 'Patterns', id: 429449079
+#mas 'Photo Privacy', id: 428752671
+#mas 'Pins', id: 1547106997
+#mas 'RAW Power', id: 1157116444 
+#mas 'Reeder', id: 1529448980
+#mas 'Shuttie', id: 415184888
+#mas 'Soulver', id: 413965349
+#mas 'Spillo', id: 873245660
+#mas 'Super Agent', id: 1568262835
+#mas 'Tab Space', id: 1473726602
+##mas 'Telegram', id: 747648890
+#mas 'Textual', id: 1262957439
+#mas 'Things', id: 904280696
+#mas 'Timery', id: 1425368544
+#mas 'Todoist', id: 585829637
+#mas 'TickTick', id: 966085870   
+#mas 'Trello', id: 1278508951
+#mas 'UTM', id: 1538878817
+#mas 'WireGuard', id: 1451685025
+#mas 'xSearch', id: 1579902068
+#mas 'Xcode', id: 497799835
 
 #################
 # Not Automated #
