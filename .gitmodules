@@ -1,3 +1,3 @@
 [submodule "prezto"]
-	path = zprezto
-	url = https://samejar@bitbucket.org/samejar/prezto.git
+    path = prezto
+    url = https://github.com/samejar/prezto
