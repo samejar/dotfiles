@@ -1,0 +1,35 @@
+# Executes at login before interactive shells are initialized.
+
+# Browser
+if [[ -z "${BROWSER}" && ${OSTYPE} == darwin* ]]; then
+  export BROWSER='open'
+fi
+
+# Editors
+export EDITOR='vi'
+export VISUAL='vi'
+export PAGER='less'
+
+# Locale
+export LANG=${LANG:-en_US.UTF-8}
+
+# Ensure path arrays do not contain duplicates
+typeset -gU cdpath fpath mailpath path
+
+path=(
+  "$HOME/bin" "$HOME/sbin"
+  /opt/{homebrew,local}/{,s}bin(N)
+  /usr/local/{,s}bin(N)
+  $path
+)
+
+# Default less options and preprocessor
+export LESS=${LESS:-'-g -i -M -R -S -w -X -z-4'}
+if [[ -z "$LESSOPEN" && ( $+commands[lesspipe] || $+commands[lesspipe.sh] ) -ne 0 ]]; then
+  export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
+fi
+
+# Homebrew environment
+if command -v /opt/homebrew/bin/brew >/dev/null 2>&1; then
+  eval $(/opt/homebrew/bin/brew shellenv)
+fi

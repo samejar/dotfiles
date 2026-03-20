@@ -1,0 +1,25 @@
+# Core behavior
+zmodule environment
+zmodule input
+zmodule utility
+zmodule completion
+zmodule git
+zmodule ssh
+zmodule termtitle
+zmodule homebrew
+zmodule exa
+zmodule fzf
+
+# Prompt helpers
+zmodule duration-info
+zmodule git-info
+zmodule prompt-pwd
+
+# Syntax, completion, and history enhancements
+zmodule zsh-users/zsh-autosuggestions
+zmodule zsh-users/zsh-completions --fpath src
+zmodule zsh-users/zsh-syntax-highlighting --source zsh-syntax-highlighting.zsh
+zmodule zsh-users/zsh-history-substring-search
+
+# Prompt
+zmodule spaceship-prompt/spaceship-prompt --name spaceship --source spaceship.zsh --no-submodules

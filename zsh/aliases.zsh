@@ -1,3 +1,21 @@
 alias reload!='. ~/.zshrc'
+alias cls='clear'
 
-alias cls='clear' # Good 'ol Clear Screen command
+alias yga='yarn global add --global-folder=`yarn global bin` '
+alias ygr='yarn global remove --global-folder=`yarn global bin` '
+
+alias mount='mount | column -t'
+alias h='history'
+alias j='jobs -l'
+alias ping='ping -c 5'
+alias fastping='ping -c 100 -s.2'
+alias ports='netstat -tulanp'
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
+alias ln='ln -i'
+alias wget='wget -c'
+alias df='df -H'
+alias du='du -ch'
+alias xcode='open -a /Applications/Xcode.app'
+alias vmvagrant='vagrant --provider vmware_fusion'

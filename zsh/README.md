@@ -1,30 +1,38 @@
-# Setting up zsh
+# Setting up Zsh
 
-## Homebrew zsh
+The interactive shell now uses [Zimfw](https://zimfw.sh/), a lightweight plugin framework that is
+installed via Homebrew and configured through files in this repository.
 
-Ensure homebrew has installed zsh:
+## 1. Install dependencies
 
-  brew info zsh
+```sh
+brew install zsh zimfw
+```
 
-To set homebrew zsh for user:
+Ensure your login shell points at Homebrew Zsh (only needs to be done once):
 
-  sudo dscl . -create /Users/$USER UserShell /usr/local/bin/zsh
+```sh
+sudo dscl . -create /Users/$USER UserShell /opt/homebrew/bin/zsh
+```
 
-## Setup prezto
+## 2. Link the runcoms
 
-Ensure the zprezto submodule is loaded into `~/.dotfiles`:
+```sh
+ln -sf ~/.dotfiles/zsh/zshrc ~/.zshrc
+ln -sf ~/.dotfiles/zsh/zprofile ~/.zprofile
+```
 
-  git submodule init
+Optional local overrides can live in `~/.dotfiles/zsh/local.zsh` (git-ignored).
 
-  git pull --recurse-submodules
+## 3. Bootstrap Zimfw
 
+The checked-in `.zshrc` points `ZIM_CONFIG_FILE` to `~/.dotfiles/zsh/zimrc`. After linking the files
+above, populate `~/.zim` with the configured modules:
 
-Prezto itself contains a number of submodules, from the zprtezto directory ensure these are loaded:
+```sh
+zimfw install
+zimfw build
+```
 
-  git submodule init
-
-  git submodule update --recursive --remote
-
-To setup prezto:
-
-
+Whenever you edit `zsh/zimrc`, rerun `zimfw install && zimfw build` to pull in the new modules. The
+next interactive shell will reuse the cached `~/.zim/init.zsh` automatically.

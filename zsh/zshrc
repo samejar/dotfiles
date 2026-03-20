@@ -1,0 +1,54 @@
+# shellcheck shell=zsh
+
+export DOTFILES=${DOTFILES:-$HOME/.dotfiles}
+export ZIM_HOME=${ZIM_HOME:-${ZDOTDIR:-$HOME}/.zim}
+export ZIM_CONFIG_FILE=${DOTFILES}/zsh/zimrc
+
+# Prompt options before modules are loaded
+export SPACESHIP_VI_MODE_SHOW=false
+export SPACESHIP_ROOT=${ZIM_HOME}/modules/spaceship
+
+_zimfw_source() {
+  local zimfw_bin="${ZIMFW_BIN:-}"
+  if [[ -z ${zimfw_bin} ]]; then
+    local brew_prefix
+    if command -v brew >/dev/null 2>&1; then
+      brew_prefix=$(brew --prefix zimfw 2>/dev/null)
+      if [[ -n ${brew_prefix} && -f ${brew_prefix}/share/zimfw.zsh ]]; then
+        zimfw_bin="${brew_prefix}/share/zimfw.zsh"
+      fi
+    fi
+    if [[ -z ${zimfw_bin} && -f /opt/homebrew/opt/zimfw/share/zimfw.zsh ]]; then
+      zimfw_bin="/opt/homebrew/opt/zimfw/share/zimfw.zsh"
+    fi
+    if [[ -z ${zimfw_bin} ]]; then
+      zimfw_bin="${ZIM_HOME}/zimfw.zsh"
+      if [[ ! -e ${zimfw_bin} ]]; then
+        mkdir -p "${zimfw_bin:h}"
+        curl -fsSL --create-dirs -o "${zimfw_bin}" \
+          https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+      fi
+    fi
+  fi
+  echo "${zimfw_bin}"
+}
+
+# Ensure zimfw is installed/up-to-date and rebuild init script when needed.
+_zimfw_init() {
+  local zimfw_bin
+  zimfw_bin=$(_zimfw_source)
+  if [[ ! -e ${ZIM_HOME}/init.zsh || ! ${ZIM_HOME}/init.zsh -nt ${ZIM_CONFIG_FILE} ]]; then
+    source "${zimfw_bin}" init
+  fi
+  source "${ZIM_HOME}/init.zsh"
+}
+
+_zimfw_init
+
+# Load shared configuration, aliases, then any local overrides
+for dotfile in "${DOTFILES}/zsh/config.zsh" "${DOTFILES}/zsh/aliases.zsh"; do
+  [[ -f ${dotfile} ]] && source "${dotfile}"
+done
+[[ -f ${DOTFILES}/zsh/local.zsh ]] && source "${DOTFILES}/zsh/local.zsh"
+
+unset -f _zimfw_source _zimfw_init

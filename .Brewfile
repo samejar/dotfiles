@@ -323,6 +323,7 @@ brew 'httpie'
 brew 'httrack'
 brew 'wget'
 brew 'yt-dlp'
+brew 'zimfw'
 
 # Image tools
 # -----------
