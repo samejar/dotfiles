@@ -24,16 +24,29 @@ cd ~/.dotfiles
 script/bootstrap
 ```
 
-This will symlink the appropriate files in `.dotfiles` to your home directory.
-Everything is configured and tweaked within `~/.dotfiles`.
+`script/bootstrap` symlinks every `*.symlink` file into your home directory, so
+`~/.zshrc` and `~/.zprofile` automatically point at the Zimfw-driven runcoms in
+`zsh/`.
 
-The main file you'll want to change right off the bat is `zsh/zshrc.symlink`,
-which sets up a few paths that'll be different on your particular machine.
+Next, install the Homebrew packages, macOS defaults, and Zimfw modules:
 
-`dot` is a simple script that installs some dependencies, sets sane OS X
-defaults, and so on. Tweak this script, and occasionally run `dot` from
-time to time to keep your environment fresh and up-to-date. You can find
-this script in `bin/`.
+```sh
+bin/dot
+```
+
+`bin/dot` runs `brew bundle`, executes any `install.sh` helper under each topic,
+and finishes by calling `zimfw install && zimfw build` so shells on every
+machine share the same module cache.
+
+Customize your shell by editing:
+
+- `zsh/zimrc` – Zimfw modules and prompts
+- `zsh/config.zsh` – shared environment variables and PATH tweaks
+- `zsh/aliases.zsh` – aliases and functions
+- `zsh/local.zsh` – optional, git-ignored file for host-specific overrides
+
+Whenever `zsh/zimrc` changes, rerun `zimfw install && zimfw build` (or just run
+`bin/dot` again) to refresh the cached init script.
 
 ## topical
 
@@ -66,6 +79,18 @@ There's a few special files in the hierarchy.
   your `$HOME`. This is so you can keep all of those versioned in your dotfiles
   but still keep those autoloaded files in your home directory. These get
   symlinked in when you run `script/bootstrap`.
+
+## language runtimes
+
+- **Python**: The `python/install.sh` helper prefers
+  [uv](https://github.com/astral-sh/uv) for lightweight CLI installs. If `uv`
+  isn't available it falls back to `pip3`.
+- **Node**: `node/install.sh` handles the global CLI tools that aren't easily
+  managed via `corepack`. Feel free to replace the `npm install -g` lines with
+  `pnpm dlx`/`corepack` equivalents if your workflow moves that direction.
+- **Go**: `go/path.zsh` defaults `GOPATH` to `~/go` (matching `go env GOPATH`)
+  and prepends `$GOBIN` to `PATH`, so binaries installed with `go install` or
+  `uv tool install` are available immediately.
 
 ## bugs
 

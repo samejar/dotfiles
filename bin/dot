@@ -19,3 +19,9 @@ brew update
 # Install software
 echo "› $ZSH/script/install"
 $ZSH/script/install
+
+# Ensure Zimfw modules are installed and cached
+if command -v zsh >/dev/null 2>&1; then
+  echo "› zimfw install && zimfw build"
+  ZDOTDIR="$HOME" zsh -i -c 'zimfw install && zimfw build'
+fi

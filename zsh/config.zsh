@@ -1,5 +1,17 @@
 typeset -gU path fpath
 
+# History configuration
+export HISTFILE=${HISTFILE:-${ZDOTDIR:-$HOME}/.zsh_history}
+export HISTSIZE=${HISTSIZE:-10000}
+export SAVEHIST=${SAVEHIST:-10000}
+setopt APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt INC_APPEND_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt HIST_VERIFY
+setopt EXTENDED_HISTORY
+
 # Homebrew completions first
 [[ -d /opt/homebrew/share/zsh-completions ]] && fpath=(/opt/homebrew/share/zsh-completions $fpath)
 
@@ -37,6 +49,7 @@ fi
 # Go via goenv
 if command -v goenv >/dev/null 2>&1; then
   export GOENV_ROOT=${GOENV_ROOT:-$HOME/.goenv}
+  export GOENV_PATH_ORDER=${GOENV_PATH_ORDER:-front}
   path=(${GOENV_ROOT}/bin $path)
   eval "$(goenv init -)"
   [[ -n ${GOROOT} ]] && path+=(${GOROOT}/bin)
@@ -71,3 +84,11 @@ sls_tab=/usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions
 
 # Prompt tweaks
 export SPACESHIP_VI_MODE_SHOW=${SPACESHIP_VI_MODE_SHOW:-false}
+
+# History substring search on arrow keys
+autoload -Uz history-substring-search-up history-substring-search-down
+zmodload -i zsh/terminfo 2>/dev/null || true
+bindkey "${terminfo[kcuu1]:-[A}" history-substring-search-up
+bindkey "${terminfo[kcud1]:-[B}" history-substring-search-down
+bindkey '^P' history-substring-search-up
+bindkey '^N' history-substring-search-down

@@ -11,6 +11,7 @@ zmodule exa
 zmodule fzf
 
 # Prompt helpers
+zmodule prompt
 zmodule duration-info
 zmodule git-info
 zmodule prompt-pwd
