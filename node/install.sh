@@ -25,12 +25,6 @@ npm install redoc-cli -g
 echo "Installing Cypress"
 npm install cypress -g
 
-echo "Installing snyk"
-npm install -g snyk
-
-echo "Installing serverless"
-npm install serverless -g
-
 echo "Installing grunt-cli"
 npm install grunt-cli -g
 echo "Installing Parcel"

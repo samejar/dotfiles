@@ -82,6 +82,11 @@ brew 'tlrc'
 brew 'uv'
 brew 'vale'
 brew 'anomalyco/tap/opencode'
+brew 'awslogs'
+brew 'proselint'
+# Serverless formula is deprecated upstream but still available; migrate to npm if Homebrew drops it.
+brew 'serverless'
+brew 'snyk-cli'
 
 # Compression
 brew 'zstd'
