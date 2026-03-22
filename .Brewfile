@@ -163,6 +163,7 @@ brew 'luarocks'
 # --------------------------
 brew 'cocoapods'
 brew 'xcodegen'
+cask 'sf-symbols'
 
 # Mobile Development
 # ------------------
@@ -216,6 +217,7 @@ brew 'nmap'
 cask 'charles'
 cask 'bruno'
 cask 'ngrok'
+cask 'mqttx'
 # Insomnia: REST client for API testing.
 cask 'insomnia'
 #cask 'paw' #Setapp
@@ -240,6 +242,7 @@ brew 'infracost'
 # Containers & VMs
 # ----------------
 cask 'podman-desktop'
+cask 'parallels'
 brew 'colima'
 brew 'dive'
 brew 'trivy'
@@ -365,6 +368,7 @@ cask 'setapp'
 
 # Browsers
 # --------
+cask 'arc'
 cask 'brave-browser'
 cask 'firefox'
 cask 'librewolf'
@@ -373,6 +377,7 @@ cask 'tor-browser'
 cask 'vivaldi'
 cask 'choosy' #Browserfairy
 cask 'fluid'
+cask 'servo'
 
 # Security
 # --------
@@ -384,6 +389,7 @@ cask 'keybase'
 # Pass, a Unix password manager for the command line
 brew 'pass'
 brew 'ykman'
+cask 'gpg-suite-no-mail'
 # cask 'encryptme'
 cask 'expressvpn'
 cask 'cloudflare-warp'
@@ -411,16 +417,26 @@ cask 'signal'
 # -----------------
 #cask 'adobe-creative-cloud'
 #cask 'adobe-bridge-cc'
+cask 'affinity-designer'
+cask 'affinity-photo'
+cask 'affinity-publisher'
+cask 'bambu-studio'
 cask 'monodraw'
+cask 'live-home-3d'
+cask 'shapr3d'
 #cask 'sketch'
 
 # A/V Software
 # ------------
+cask 'audacity'
 cask 'audio-hijack'
+cask 'camo-studio'
 cask 'handbrake-app'
 cask 'iina'
 cask 'powerphotos'
 cask 'vlc'
+cask 'fission'
+cask 'soundsource'
 
 # Video/Audio editing
 # -------------------
@@ -438,6 +454,7 @@ cask 'alfred'
 #cask 'bartender' #setapp
 #cask 'bettertouchtool' #setapp
 brew 'duti'
+cask 'launchcontrol'
 cask 'hazel'
 #cask 'tripmode' #setapp
 cask 'the-unarchiver'
@@ -469,13 +486,23 @@ cask 'maestral'
 # ------------
 cask 'airtable'
 cask 'grammarly'
+cask 'fantastical'
+cask 'fastmail'
+cask 'godspeed'
 cask 'mailmate'
 cask 'mailspring'
+cask 'mimestream'
 cask 'microsoft-office'
+cask 'microsoft-excel'
+cask 'microsoft-powerpoint'
+cask 'onedrive'
+cask 'raycast'
+cask 'reader'
 cask 'notion'
 cask 'linear-linear'
 cask 'obsidian'
 cask 'standard-notes'
+cask 'xmind'
 
 # Project Management
 # ------------------
@@ -488,11 +515,16 @@ cask 'clickup'
 
 # AI/LLM
 # ----
+cask 'chatgpt'
+cask 'claude'
 cask 'codex'
 cask 'commander'
+cask 'ollama-app'
+cask 'wispr-flow'
 
 # Misc
 # ----
+cask 'emailchemy'
 #cask 'busycontacts'
 cask 'geekbench'
 cask 'rocket'
