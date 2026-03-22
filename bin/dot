@@ -20,6 +20,14 @@ brew update
 echo "› $ZSH/script/install"
 $ZSH/script/install
 
+# Keep Homebrew lean
+if command -v brew >/dev/null 2>&1; then
+  echo "› brew autoremove"
+  brew autoremove
+  echo "› brew cleanup --prune=30"
+  brew cleanup --prune=30
+fi
+
 # Ensure Zimfw modules are installed and cached
 if command -v zsh >/dev/null 2>&1; then
   echo "› zimfw install && zimfw build"

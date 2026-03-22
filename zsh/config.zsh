@@ -1,5 +1,8 @@
 typeset -gU path fpath
 
+# Tell Homebrew where the Brewfile lives so `brew bundle` works anywhere.
+export HOMEBREW_BUNDLE_FILE=${HOMEBREW_BUNDLE_FILE:-$HOME/.dotfiles/.Brewfile}
+
 # History configuration
 export HISTFILE=${HISTFILE:-${ZDOTDIR:-$HOME}/.zsh_history}
 export HISTSIZE=${HISTSIZE:-10000}
