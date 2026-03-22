@@ -16,27 +16,33 @@ subject](http://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/).
 
 ## install
 
-Run this:
+1. Install [Homebrew](https://brew.sh) and chezmoi:
 
-```sh
-git clone https://github.com/samejar/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
-script/bootstrap
-```
+   ```sh
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   brew install chezmoi git
+   ```
 
-`script/bootstrap` symlinks every `*.symlink` file into your home directory, so
-`~/.zshrc` and `~/.zprofile` automatically point at the Zimfw-driven runcoms in
-`zsh/`.
+2. Apply the dotfiles with chezmoi:
 
-Next, install the Homebrew packages, macOS defaults, and Zimfw modules:
+   ```sh
+   chezmoi init --apply samejar/dotfiles
+   ```
 
-```sh
-bin/dot
-```
+   Chez-moi clones this repo to `~/.local/share/chezmoi` and writes the managed
+   files into `$HOME`.
 
-`bin/dot` runs `brew bundle`, executes any `install.sh` helper under each topic,
-and finishes by calling `zimfw install && zimfw build` so shells on every
-machine share the same module cache.
+3. Run the provisioning script (installs Homebrew packages, macOS defaults, and
+   Zimfw modules):
+
+   ```sh
+   chezmoi cd && bin/dot
+   ```
+
+`bin/dot` runs `brew bundle`, executes each topic’s `install.sh`, cleans up
+unused formulae (`brew autoremove` / `brew cleanup --prune=30`), and finishes by
+calling `zimfw install && zimfw build` so shells on every machine share the same
+module cache.
 
 Customize your shell by editing:
 
@@ -45,16 +51,56 @@ Customize your shell by editing:
 - `zsh/aliases.zsh` – aliases and functions
 - `zsh/local.zsh` – optional, git-ignored file for host-specific overrides
 
-Whenever `zsh/zimrc` changes, rerun `zimfw install && zimfw build` (or just run
-`bin/dot` again) to refresh the cached init script.
+Use `chezmoi edit ~/.zshrc` (or `chezmoi cd` to enter the source tree) followed
+by `chezmoi apply` to propagate any changes.
+
+### New machine checklist
+
+1. **Sign in to macOS & GitHub**
+   - Install the Xcode Command Line Tools (`xcode-select --install`) when
+     prompted.
+   - In Safari/Arc, sign in to GitHub with your passkey so HTTPS cloning works
+     immediately.
+2. **Install and apply the dotfiles**
+
+   ```sh
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   brew install chezmoi git
+   chezmoi init --apply samejar/dotfiles
+   chezmoi cd && bin/dot
+   ```
+
+3. **Install 1Password & its CLI**
+   - Install 1Password from the Mac App Store and sign in.
+   - `brew install --cask 1password-cli` (handled automatically by `bin/dot`).
+4. **Create a per-machine SSH key stored in 1Password**
+
+   ```sh
+   ssh-keygen -t ed25519 -C "github-$(scutil --get ComputerName)"
+   op signin
+   op item create --category "ssh-key" --title "GitHub $(hostname)" \
+     private-key=@~/.ssh/id_ed25519 public-key=@~/.ssh/id_ed25519.pub
+   rm ~/.ssh/id_ed25519
+   ```
+
+   - In 1Password, open the new SSH key item and enable **Use with SSH agent**.
+   - Copy the public key and add it to GitHub (Settings → SSH and GPG keys).
+5. **Switch git remotes to SSH** (optional)
+
+   ```sh
+   chezmoi cd
+   git remote set-url origin git@github.com:samejar/dotfiles.git
+   ```
+
+   From now on `git pull`/`git push` use the 1Password SSH agent.
 
 ## topical
 
 Everything's built around topic areas. If you're adding a new area to your
 forked dotfiles — say, "Java" — you can simply add a `java` directory and put
 files in there. Anything with an extension of `.zsh` will get automatically
-included into your shell. Anything with an extension of `.symlink` will get
-symlinked without extension into `$HOME` when you run `script/bootstrap`.
+included into your shell. Files prefixed with `dot_` (for example `dot_zshrc`)
+are materialized into `$HOME` when you run `chezmoi apply`.
 
 ## what's inside
 
@@ -75,10 +121,9 @@ There's a few special files in the hierarchy.
   expected to setup `$PATH` or similar.
 - **topic/completion.zsh**: Any file named `completion.zsh` is loaded
   last and is expected to setup autocomplete.
-- **topic/\*.symlink**: Any files ending in `*.symlink` get symlinked into
-  your `$HOME`. This is so you can keep all of those versioned in your dotfiles
-  but still keep those autoloaded files in your home directory. These get
-  symlinked in when you run `script/bootstrap`.
+- **dot_* / private_* files**: ChezMoi writes these into your `$HOME` (e.g.
+  `dot_zshrc` becomes `~/.zshrc`). Use `chezmoi apply` after editing to sync the
+  rendered copies.
 
 ## language runtimes
 

@@ -1,6 +1,13 @@
 # shellcheck shell=zsh
 
-export DOTFILES=${DOTFILES:-$HOME/.dotfiles}
+if [[ -z ${DOTFILES:-} ]]; then
+  if [[ -d ${HOME}/.local/share/chezmoi ]]; then
+    export DOTFILES=${HOME}/.local/share/chezmoi
+  else
+    export DOTFILES=${HOME}/.dotfiles
+  fi
+fi
+
 export ZIM_HOME=${ZIM_HOME:-${ZDOTDIR:-$HOME}/.zim}
 export ZIM_CONFIG_FILE=${DOTFILES}/zsh/zimrc
 

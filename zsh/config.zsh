@@ -1,7 +1,7 @@
 typeset -gU path fpath
 
 # Tell Homebrew where the Brewfile lives so `brew bundle` works anywhere.
-export HOMEBREW_BUNDLE_FILE=${HOMEBREW_BUNDLE_FILE:-$HOME/.dotfiles/.Brewfile}
+export HOMEBREW_BUNDLE_FILE=${HOMEBREW_BUNDLE_FILE:-$DOTFILES/.Brewfile}
 
 # History configuration
 export HISTFILE=${HISTFILE:-${ZDOTDIR:-$HOME}/.zsh_history}
@@ -19,7 +19,7 @@ setopt EXTENDED_HISTORY
 [[ -d /opt/homebrew/share/zsh-completions ]] && fpath=(/opt/homebrew/share/zsh-completions $fpath)
 
 # Custom bin directories
-path=("$HOME/.dotfiles/bin" $path)
+path=("$DOTFILES/bin" $path)
 [[ -d /usr/local/opt/libpq/bin ]] && path=(/usr/local/opt/libpq/bin $path)
 path=("$HOME/.local/bin" $path)
 

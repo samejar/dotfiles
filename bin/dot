@@ -4,7 +4,15 @@
 #
 # `dot` handles installation, updates, things like that. Run it periodically
 # to make sure you're on the latest and greatest.
-export ZSH=$HOME/.dotfiles
+if [ -z "${DOTFILES:-}" ]; then
+  if [ -d "$HOME/.local/share/chezmoi" ]; then
+    DOTFILES="$HOME/.local/share/chezmoi"
+  else
+    DOTFILES="$HOME/.dotfiles"
+  fi
+fi
+export DOTFILES
+ZSH="$DOTFILES"
 
 # Set macOS defaults
 $ZSH/macos/set-defaults.sh
@@ -18,7 +26,7 @@ brew update
 
 # Install software
 echo "› $ZSH/script/install"
-$ZSH/script/install
+DOTFILES="$ZSH" HOMEBREW_BUNDLE_FILE="${HOMEBREW_BUNDLE_FILE:-$DOTFILES/.Brewfile}" "$ZSH/script/install"
 
 # Keep Homebrew lean
 if command -v brew >/dev/null 2>&1; then
