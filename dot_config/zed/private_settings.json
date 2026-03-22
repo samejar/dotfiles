@@ -1,0 +1,45 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette
+{
+  "git_panel": {
+    "sort_by_path": false
+  },
+  "agent": {
+    "default_profile": "ask",
+    "default_model": {
+      "provider": "openai",
+      "model": "gpt-5.2"
+    },
+  },
+  "ui_font_size": 14,
+  "buffer_font_size": 14,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "One Dark"
+  },
+  "language_models": {
+    "openai": {
+      "api_url": "https://litellm.borg.xeric.in",
+      "available_models": [
+        {
+          "name": "deepseek/deepseek-chat",
+          "display_name": "DeepSeek Chat",
+          "max_tokens": 128000
+        },
+        {
+          "name": "deepseek/deepseek-reasoner",
+          "display_name": "DeepSeek Reasoner",
+          "max_tokens": 128000,
+          "max_completion_tokens": 20000
+        }
+      ],
+    }
+  }
+}
