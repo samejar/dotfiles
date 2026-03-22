@@ -32,17 +32,18 @@ subject](http://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/).
    Chez-moi clones this repo to `~/.local/share/chezmoi` and writes the managed
    files into `$HOME`.
 
-3. Run the provisioning script (installs Homebrew packages, macOS defaults, and
-   Zimfw modules):
+3. Run the provisioning script (installs Homebrew packages and runs each
+   topic’s `install.sh` helper):
 
    ```sh
-   chezmoi cd && bin/dot
+   chezmoi cd && ./script/install
    ```
 
-`bin/dot` runs `brew bundle`, executes each topic’s `install.sh`, cleans up
-unused formulae (`brew autoremove` / `brew cleanup --prune=30`), and finishes by
-calling `zimfw install && zimfw build` so shells on every machine share the same
-module cache.
+4. (Optional) Apply the curated macOS defaults once per machine:
+
+   ```sh
+   chezmoi cd && ./macos/set-defaults.sh
+   ```
 
 Customize your shell by editing:
 
@@ -67,12 +68,14 @@ by `chezmoi apply` to propagate any changes.
    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
    brew install chezmoi git
    chezmoi init --apply samejar/dotfiles
-   chezmoi cd && bin/dot
+   chezmoi cd && ./script/install
+   chezmoi cd && ./macos/set-defaults.sh   # optional, once per machine
    ```
 
 3. **Install 1Password & its CLI**
    - Install 1Password from the Mac App Store and sign in.
-   - `brew install --cask 1password-cli` (handled automatically by `bin/dot`).
+   - `brew install --cask 1password-cli` (handled automatically by
+     `script/install`).
 4. **Create a per-machine SSH key stored in 1Password**
 
    ```sh

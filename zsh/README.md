@@ -22,7 +22,7 @@ managed files:
 
 ```sh
 chezmoi init --apply samejar/dotfiles
-chezmoi cd && bin/dot
+chezmoi cd && ./script/install
 ```
 
 Optional local overrides can live in `~/.local/share/chezmoi/zsh/local.zsh`
@@ -37,8 +37,6 @@ the dotfiles, populate `~/.zim` with the configured modules:
 zimfw install && zimfw build
 ```
 
-`bin/dot` runs the same command automatically after installing Homebrew
-formulae, so you only need to run it manually when experimenting. Whenever you
-edit `zsh/zimrc`, rerun `zimfw install && zimfw build` to pull in the new
-modules. The next interactive shell will reuse the cached `~/.zim/init.zsh`
-automatically.
+Whenever you edit `zsh/zimrc`, rerun `zimfw install && zimfw build` to pull in
+the new modules. The next interactive shell will reuse the cached
+`~/.zim/init.zsh` automatically.
