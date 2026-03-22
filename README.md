@@ -97,6 +97,11 @@ by `chezmoi apply` to propagate any changes.
 
    From now on `git pull`/`git push` use the 1Password SSH agent.
 
+6. **Clone any work repositories manually**
+   - Use `gh repo clone org/repo ~/development/repo` (or your preferred Git
+     workflow) to fetch project code as needed. The old `development/` helper
+     scripts have been removed in favor of on-demand cloning.
+
 ## topical
 
 Everything's built around topic areas. If you're adding a new area to your
