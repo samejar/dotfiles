@@ -1,0 +1,68 @@
+Host *
+  UseKeychain yes
+  AddKeysToAgent yes
+  IdentityAgent ~/.1password/agent.sock
+  ServerAliveInterval 60
+  ServerAliveCountMax 3
+
+Include ~/.colima/ssh_config
+
+#########################
+# Hendon Configuration #
+#########################
+
+Host estoril
+  Hostname estoril.xeric.in
+  User bear
+
+Host estoril-root
+  Hostname 192.168.99.50
+  User root
+
+Host aida
+  Hostname aida.xeric.in
+  User ajames
+  IdentityFile ~/.ssh/xeric_ed25519
+  IdentitiesOnly yes
+
+Host zandvoort
+  Hostname 192.168.99.1
+  User ajames
+  IdentityFile ~/.ssh/id_ed25519
+  IdentitiesOnly yes
+  RemoteCommand TERM=xterm-256color $SHELL
+  RequestTTY yes
+
+Host pi
+  Hostname 192.168.99.53
+  User pi
+  RemoteCommand TERM=xterm-256color $SHELL
+  RequestTTY yes
+
+Host charade
+  Hostname charade.xeric.in
+  User ajames
+
+Host watkins
+  Hostname watkins.xeric.in
+  User ubuntu
+
+Host ash
+  Hostname ash.xeric.in
+  User rock
+
+Host fern
+  Hostname fern.xeric.in
+  User ubuntu
+
+Host pine
+  Hostname pine.xeric.in
+  User ubuntu
+
+Host maple
+  Hostname maple.xeric.in
+  User ubuntu
+
+Host willow
+  Hostname willow.xeric.in
+  User ubuntu
