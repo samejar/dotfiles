@@ -1,0 +1,12 @@
+#!/bin/sh
+set -e
+
+cd "{{ .chezmoi.sourceDir }}"
+
+if [ -x ./macos/set-defaults.sh ]; then
+  ./macos/set-defaults.sh
+fi
+
+if [ -x ./macos/mailmate.sh ]; then
+  ./macos/mailmate.sh
+fi
