@@ -4,12 +4,10 @@
 
 set -e
 
-if [ -z "${DOTFILES:-}" ]; then
-  if [ -d "$HOME/.local/share/chezmoi" ]; then
-    DOTFILES="$HOME/.local/share/chezmoi"
-  else
-    DOTFILES="$HOME/.dotfiles"
-  fi
+DOTFILES=${DOTFILES:-$HOME/.local/share/chezmoi}
+if [ ! -d "$DOTFILES" ]; then
+  echo "DOTFILES directory $DOTFILES not found. Run 'chezmoi init --apply samejar/dotfiles' first." >&2
+  exit 1
 fi
 export DOTFILES
 
