@@ -1,0 +1,25 @@
+#!/bin/sh
+set -e
+
+{{- if .projects }}
+echo "Cloning standard development repositories (run-once)..."
+while IFS=$'\t' read -r repo dest; do
+  [ -z "$repo" ] && continue
+  if [ -d "$dest" ]; then
+    echo "  Skipping $dest (already exists)"
+    continue
+  fi
+  parent_dir=$(dirname "$dest")
+  mkdir -p "$parent_dir"
+  echo "  git clone $repo -> $dest"
+  if ! git clone "$repo" "$dest"; then
+    echo "  Warning: failed to clone $repo" >&2
+  fi
+done <<'EOF'
+{{- range .projects }}
+{{ .repo }}	{{ .path }}
+{{- end }}
+EOF
+{{- else }}
+echo "No projects defined in chezmoi data; skipping git clone run-once hook."
+{{- end }}

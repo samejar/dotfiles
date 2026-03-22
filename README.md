@@ -97,6 +97,14 @@ by `chezmoi apply` to propagate any changes.
 
    From now on `git pull`/`git push` use the 1Password SSH agent.
 
+6. **(Optional) Customize default project clones**
+   - ChezMoi maintains a list of frequently used repositories in
+     `dot_config/chezmoi/chezmoi.toml.tmpl` (`[data].projects`). The
+     `run_once_after_20-clone-projects.sh.tmpl` hook clones each repo the first
+     time you apply these dotfiles on a machine. Edit that list to add/remove
+     repositories before running `chezmoi apply` if you want automatic checkouts
+     in `~/development/...`.
+
 ## topical
 
 Everything's built around topic areas. If you're adding a new area to your
