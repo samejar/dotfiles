@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-{{- if .projects }}
+{{- if hasKey . "projects" }}
 echo "Cloning standard development repositories (run-once)..."
 while IFS=$'\t' read -r repo dest; do
   [ -z "$repo" ] && continue
