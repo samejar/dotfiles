@@ -104,6 +104,10 @@ by `chezmoi apply` to propagate any changes.
      time you apply these dotfiles on a machine. Edit that list to add/remove
      repositories before running `chezmoi apply` if you want automatic checkouts
      in `~/development/...`.
+7. **(Optional) Customize global pnpm packages**
+   - The same data file also exposes `[data].pnpm_packages`, which drives the
+     templated `node/install.sh`. Adjust that array to control which Node CLI
+     tools get installed globally via `pnpm add -g ...` during provisioning.
 
 ## topical
 
@@ -142,8 +146,9 @@ There's a few special files in the hierarchy.
   [uv](https://github.com/astral-sh/uv) for lightweight CLI installs. If `uv`
   isn't available it falls back to `pip3`.
 - **Node**: `node/install.sh` handles the global CLI tools that aren't easily
-  managed via `corepack`. Feel free to replace the `npm install -g` lines with
-  `pnpm dlx`/`corepack` equivalents if your workflow moves that direction.
+- **Node**: `node/install.sh` installs global CLI tools with `pnpm add -g`
+  according to `[data].pnpm_packages` in `dot_config/chezmoi/chezmoi.toml.tmpl`.
+  Update that list to change which CLIs get provisioned on new machines.
 - **Go**: `go/path.zsh` defaults `GOPATH` to `~/go` (matching `go env GOPATH`)
   and prepends `$GOBIN` to `PATH`, so binaries installed with `go install` or
   `uv tool install` are available immediately.

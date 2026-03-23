@@ -333,6 +333,7 @@ brew 'httrack'
 brew 'wget'
 brew 'yt-dlp'
 brew 'zimfw'
+brew 'pnpm'
 
 # Image tools
 # -----------
