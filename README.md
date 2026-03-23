@@ -1,18 +1,9 @@
-# holman does dotfiles
+# chezmoi dotfiles
 
-## dotfiles
-
-Your dotfiles are how you personalize your system. These are mine.
-
-I was a little tired of having long alias files and everything strewn about
-(which is extremely common on other dotfiles projects, too). That led to this
-project being much more topic-centric. I realized I could split a lot of things
-up into the main areas I used (Ruby, git, system libraries, and so on), so I
-structured the project accordingly.
-
-If you're interested in the philosophy behind why projects like these are
-awesome, you might want to [read my post on the
-subject](http://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/).
+These dotfiles are managed entirely with [chezmoi](https://www.chezmoi.io/).
+The repository lives in `~/.local/share/chezmoi` and `chezmoi apply` is the
+only entry point—there are no manual `bin/` bootstrap scripts or legacy Holman
+conventions left.
 
 ## install
 
@@ -40,7 +31,7 @@ subject](http://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/).
      MailMate setup scripts the first time you apply these dotfiles on a new
      machine.
    - `run_once_after_20-clone-projects.sh.tmpl` clones any repositories listed
-     under `[data].projects` in `dot_config/chezmoi/chezmoi.toml.tmpl`.
+     under `[data].projects` in `.chezmoidata.tmpl`.
    - `run_after_30-zimfw.sh.tmpl` ensures Zimfw modules are installed and the
      cached `~/.zim/init.zsh` is rebuilt on every apply.
 
@@ -104,76 +95,39 @@ by `chezmoi apply` to propagate any changes.
 
 6. **(Optional) Customize default project clones**
    - ChezMoi maintains a list of frequently used repositories in
-     `dot_config/chezmoi/chezmoi.toml.tmpl` (`[data].projects`). The
+     `.chezmoidata.tmpl` (`[data].projects`). The
      `run_once_after_20-clone-projects.sh.tmpl` hook clones each repo the first
      time you apply these dotfiles on a machine. Edit that list to add/remove
      repositories before running `chezmoi apply` if you want automatic checkouts
      in `~/development/...`.
 7. **(Optional) Customize global pnpm packages**
    - The same data file also exposes `[data].pnpm_packages`, which drives the
-     templated `node/install.sh`. Adjust that array to control which Node CLI
+     templated `scripts/node/install.sh`. Adjust that array to control which CLI
      tools get installed globally via `pnpm add -g ...` during provisioning.
 
-## topical
+## repository layout
 
-Everything's built around topic areas. If you're adding a new area to your
-forked dotfiles — say, "Java" — you can simply add a `java` directory and put
-files in there. Anything with an extension of `.zsh` will get automatically
-included into your shell. Files prefixed with `dot_` (for example `dot_zshrc`)
-are materialized into `$HOME` when you run `chezmoi apply`.
-
-## what's inside
-
-A lot of stuff. Seriously, a lot of stuff. Check them out in the file browser
-above and see what components may mesh up with you.
-[Fork it](https://github.com/holman/dotfiles/fork), remove what you don't
-use, and build on what you do use.
-
-## components
-
-There's a few special files in the hierarchy.
-
-- **bin/**: Anything in `bin/` will get added to your `$PATH` and be made
-  available everywhere.
-- **topic/\*.zsh**: Any files ending in `.zsh` get loaded into your
-  environment.
-- **topic/path.zsh**: Any file named `path.zsh` is loaded first and is
-  expected to setup `$PATH` or similar.
-- **topic/completion.zsh**: Any file named `completion.zsh` is loaded
-  last and is expected to setup autocomplete.
-- **dot_* / private_* files**: ChezMoi writes these into your `$HOME` (e.g.
-  `dot_zshrc` becomes `~/.zshrc`). Use `chezmoi apply` after editing to sync the
-  rendered copies.
+- **`dot_*` / `private_*` files** – rendered into `$HOME` during
+  `chezmoi apply` (for example, `dot_zshrc` → `~/.zshrc`). Use `chezmoi edit`
+  when making changes.
+- **`scripts/`** – provisioning helpers invoked by the `run_*.tmpl` hooks. They
+  live only in `~/.local/share/chezmoi` and are never copied to `$HOME`.
+- **`bin/`** – CLI helpers that are added to your shell `$PATH`.
+- **`zsh/`** – modular shell configuration (zimrc, aliases, config snippets).
+- **`.chezmoidata.tmpl`** – declarative data for repo clones and pnpm packages.
 
 ## language runtimes
 
-- **Python**: The `python/install.sh` helper prefers
-  [uv](https://github.com/astral-sh/uv) for lightweight CLI installs. If `uv`
-  isn't available it falls back to `pip3`.
-- **Node**: `node/install.sh` handles the global CLI tools that aren't easily
-- **Node**: `node/install.sh` installs global CLI tools with `pnpm add -g`
-  according to `[data].pnpm_packages` in `dot_config/chezmoi/chezmoi.toml.tmpl`.
-  Update that list to change which CLIs get provisioned on new machines.
-- **Go**: `go/path.zsh` defaults `GOPATH` to `~/go` (matching `go env GOPATH`)
-  and prepends `$GOBIN` to `PATH`, so binaries installed with `go install` or
-  `uv tool install` are available immediately.
+- **Python** – `scripts/python/install.sh` uses
+  [uv](https://github.com/astral-sh/uv) for CLI installs, falling back to
+  `pip3`.
+- **Node** – `scripts/node/install.sh` installs whatever is in
+  `[data].pnpm_packages` via `pnpm add -g` (currently just `playwright`).
+- **Go** – `scripts/go/path.zsh` configures `GOPATH/GOBIN` so `go install`
+  binaries land on `$PATH`.
 
-## bugs
+## maintenance
 
-I want this to work for everyone; that means when you clone it down it should
-work for you even though you may not have `rbenv` installed, for example. That
-said, I do use this as *my* dotfiles, so there's a good chance I may break
-something if I forget to make a check for a dependency.
-
-If you're brand-new to the project and run into any blockers, please
-[open an issue](https://github.com/holman/dotfiles/issues) on this repository
-and I'd love to get it fixed for you!
-
-## thanks
-
-I forked [Ryan Bates](http://github.com/ryanb)' excellent
-[dotfiles](http://github.com/ryanb/dotfiles) for a couple years before the
-weight of my changes and tweaks inspired me to finally roll my own. But Ryan's
-dotfiles were an easy way to get into bash customization, and then to jump ship
-to zsh a bit later. A decent amount of the code in these dotfiles stem or are
-inspired from Ryan's original project.
+- **Updating** – `git pull` inside `~/.local/share/chezmoi` and run `chezmoi
+  apply`; hooks do the rest.
+- **Issues** – open an issue or PR in this repo if something regresses.
