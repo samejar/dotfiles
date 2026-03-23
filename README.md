@@ -33,7 +33,7 @@ subject](http://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/).
    files into `$HOME`.
 
 3. `chezmoi init --apply` triggers the provisioning hooks automatically:
-   - `run_before_20-install.sh.tmpl` executes `script/install`, which runs
+   - `run_before_20-install.sh.tmpl` executes `scripts/install`, which runs
      `brew bundle`, cleans up Homebrew, and executes each topic’s `install.sh`
      (Python, Node, etc.).
    - `run_once_before_10-macos.sh.tmpl` applies the curated macOS defaults and
