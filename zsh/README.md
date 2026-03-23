@@ -22,7 +22,6 @@ managed files:
 
 ```sh
 chezmoi init --apply samejar/dotfiles
-chezmoi cd && ./script/install
 ```
 
 Optional local overrides can live in `~/.local/share/chezmoi/zsh/local.zsh`
@@ -30,13 +29,11 @@ Optional local overrides can live in `~/.local/share/chezmoi/zsh/local.zsh`
 
 ## 3. Bootstrap Zimfw
 
-The checked-in `.zshrc` points `ZIM_CONFIG_FILE` to `zsh/zimrc`. After applying
-the dotfiles, populate `~/.zim` with the configured modules:
+The checked-in `.zshrc` points `ZIM_CONFIG_FILE` to `zsh/zimrc`. The
+`run_after_30-zimfw.sh.tmpl` hook automatically runs `zimfw install && zimfw
+build` after each `chezmoi apply`, so your plugins remain up to date. If you
+need to rerun it manually:
 
 ```sh
-zimfw install && zimfw build
+ZDOTDIR="$HOME" zsh -i -c 'zimfw install && zimfw build'
 ```
-
-Whenever you edit `zsh/zimrc`, rerun `zimfw install && zimfw build` to pull in
-the new modules. The next interactive shell will reuse the cached
-`~/.zim/init.zsh` automatically.

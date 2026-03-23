@@ -32,18 +32,21 @@ subject](http://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/).
    Chez-moi clones this repo to `~/.local/share/chezmoi` and writes the managed
    files into `$HOME`.
 
-3. Run the provisioning script (installs Homebrew packages and runs each
-   topic’s `install.sh` helper):
+3. `chezmoi init --apply` triggers the provisioning hooks automatically:
+   - `run_before_20-install.sh.tmpl` executes `script/install`, which runs
+     `brew bundle`, cleans up Homebrew, and executes each topic’s `install.sh`
+     (Python, Node, etc.).
+   - `run_once_before_10-macos.sh.tmpl` applies the curated macOS defaults and
+     MailMate setup scripts the first time you apply these dotfiles on a new
+     machine.
+   - `run_once_after_20-clone-projects.sh.tmpl` clones any repositories listed
+     under `[data].projects` in `dot_config/chezmoi/chezmoi.toml.tmpl`.
+   - `run_after_30-zimfw.sh.tmpl` ensures Zimfw modules are installed and the
+     cached `~/.zim/init.zsh` is rebuilt on every apply.
 
-   ```sh
-   chezmoi cd && ./script/install
-   ```
-
-4. (Optional) Apply the curated macOS defaults once per machine:
-
-   ```sh
-   chezmoi cd && ./macos/set-defaults.sh
-   ```
+4. Re-run `chezmoi apply` any time you pull updates to keep your machine in
+   sync. The provisioning hook (`run_before_20-install.sh.tmpl`) reruns each
+   time, so global pnpm packages, Homebrew bundles, etc., stay current.
 
 Customize your shell by editing:
 
@@ -68,14 +71,16 @@ by `chezmoi apply` to propagate any changes.
    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
    brew install chezmoi git
    chezmoi init --apply samejar/dotfiles
-   chezmoi cd && ./script/install
-   chezmoi cd && ./macos/set-defaults.sh   # optional, once per machine
    ```
+
+   `chezmoi apply` (and the `--apply` flag above) automatically runs the
+   provisioning scripts and macOS defaults hook described earlier. Re-run
+   `chezmoi apply` any time you sync new changes.
 
 3. **Install 1Password & its CLI**
    - Install 1Password from the Mac App Store and sign in.
-   - `brew install --cask 1password-cli` (handled automatically by
-     `script/install`).
+   - `brew install --cask 1password-cli` (handled automatically by the
+     provisioning hook).
 4. **Create a per-machine SSH key stored in 1Password**
 
    ```sh

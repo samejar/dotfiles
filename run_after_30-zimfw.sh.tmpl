@@ -1,0 +1,15 @@
+#!/bin/sh
+set -e
+
+if ! command -v zsh >/dev/null 2>&1; then
+  echo "Skipping zimfw bootstrap (zsh not installed)."
+  exit 0
+fi
+
+if ! command -v zimfw >/dev/null 2>&1; then
+  echo "Skipping zimfw bootstrap (zimfw not installed yet)."
+  exit 0
+fi
+
+echo "Updating zimfw modules"
+ZDOTDIR="{{ .chezmoi.homeDir }}" zsh -i -c 'zimfw install && zimfw build'
