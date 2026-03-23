@@ -62,17 +62,6 @@ fi
 # Docker (Colima)
 export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
 
-# Ruby gems keg
-if command -v brew >/dev/null 2>&1; then
-  typeset gem_cellar
-  gem_cellar="$(brew --prefix)/Cellar/gems/2.0"
-  if [[ -d ${gem_cellar} ]]; then
-    export GEM_HOME=${gem_cellar}
-    export GEM_PATH=${gem_cellar}
-    path+=(${gem_cellar}/bin)
-  fi
-fi
-
 # 1Password SSH agent
 export SSH_AUTH_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 
