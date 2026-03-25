@@ -33,9 +33,9 @@ if command -v brew >/dev/null 2>&1; then
   SCRIPT_BIN=${SCRIPT_BIN:-$(command -v script 2>/dev/null || echo /usr/bin/script)}
   run_with_tty brew update
   echo "› brew bundle"
-  default_brewfile="$HOME/.Brewfile"
-  if [ ! -f "$default_brewfile" ] && [ -f "$DOTFILES/.Brewfile" ]; then
-    default_brewfile="$DOTFILES/.Brewfile"
+  default_brewfile="$HOME/Brewfile"
+  if [ ! -f "$default_brewfile" ] && [ -f "$DOTFILES/Brewfile" ]; then
+    default_brewfile="$DOTFILES/Brewfile"
   fi
   run_with_tty env HOMEBREW_BUNDLE_FILE="${HOMEBREW_BUNDLE_FILE:-$default_brewfile}" brew bundle
   echo "› brew autoremove"
