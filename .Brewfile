@@ -326,11 +326,14 @@ cask 'servo'
 # AI & LLM     #
 ################
 brew 'anomalyco/tap/opencode'
-brew 'gemini-cli'
+cask 'block-goose'
+brew 'block-goose-cli'
 cask 'chatgpt'
 cask 'claude'
 cask 'codex'
 cask 'commander'
+brew 'gemini-cli'
+brew 'llm'
 cask 'ollama-app'
 cask 'wispr-flow'
 
