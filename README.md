@@ -15,15 +15,24 @@ conventions left.
 
    The repository must live at `~/.local/share/chezmoi` for chezmoi to manage it. Use `chezmoi cd` at any time to jump into this directory.
 
-2. Apply the dotfiles:
+2. Install chezmoi (and Homebrew if needed):
+
+   ```sh
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   brew install chezmoi
+   ```
+
+   If you already have brew/chezmoi installed you can skip this step.
+
+3. Apply the dotfiles:
 
    ```sh
    chezmoi apply
    ```
 
-   The apply step writes all managed files into `$HOME` and runs the provisioning hooks below. (If you prefer the one-liner that installs prerequisites for you, `chezmoi init --apply samejar/dotfiles` still works.)
+   The apply step writes all managed files into `$HOME` and runs the provisioning hooks below. (If you prefer the one-liner that handles everything, `chezmoi init --apply samejar/dotfiles` still works.)
 
-3. The apply step triggers the provisioning hooks automatically:
+4. The apply step triggers the provisioning hooks automatically:
    - `run_before_20-install.sh.tmpl` executes `scripts/install`, which runs
      `brew bundle`, cleans up Homebrew, and executes each topic’s `install.sh`
      (Python, Node, etc.).
@@ -35,7 +44,7 @@ conventions left.
    - `run_after_30-zimfw.sh.tmpl` ensures Zimfw modules are installed and the
      cached `~/.zim/init.zsh` is rebuilt on every apply.
 
-4. Re-run `chezmoi apply` any time you pull updates to keep your machine in
+5. Re-run `chezmoi apply` any time you pull updates to keep your machine in
    sync. The provisioning hook (`run_before_20-install.sh.tmpl`) reruns each
    time, so global pnpm packages, Homebrew bundles, etc., stay current.
 
@@ -56,14 +65,16 @@ by `chezmoi apply` to propagate any changes.
      prompted.
    - In Safari/Arc, sign in to GitHub with your passkey so HTTPS cloning works
      immediately.
-2. **Clone the repo and apply the dotfiles**
+2. **Clone the repo, install chezmoi, and apply the dotfiles**
 
    ```sh
    git clone https://github.com/samejar/dotfiles.git ~/.local/share/chezmoi
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   brew install chezmoi
    chezmoi apply
    ```
 
-   This ensures the repo exists under `~/.local/share/chezmoi` before chezmoi runs. Re-run `chezmoi apply` any time you sync new changes. (If chezmoi/Homebrew aren’t installed yet, you can still run `chezmoi init --apply samejar/dotfiles` as a one-shot bootstrap.)
+   This sequence ensures the repo exists under `~/.local/share/chezmoi` before chezmoi runs. Re-run `chezmoi apply` any time you sync new changes. (If you want a shortcut, `chezmoi init --apply samejar/dotfiles` still performs all of these steps automatically.)
 
 3. **Install 1Password & its CLI**
    - Install 1Password from the Mac App Store and sign in.
