@@ -15,16 +15,22 @@ conventions left.
 
    The repository must live at `~/.local/share/chezmoi` for chezmoi to manage it. Use `chezmoi cd` at any time to jump into this directory.
 
-2. Install chezmoi:
+2. Install homebrew:
 
    ```sh
-   sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
+
+3. Install chezmoi:
+
+   ```sh
+   brew install chezmoi
    ```
 
    Adjust the install path if `/usr/local/bin` isn’t writable; any directory on
    your `$PATH` works.
 
-3. Apply the dotfiles:
+4. Apply the dotfiles:
 
    ```sh
    chezmoi apply
@@ -32,7 +38,7 @@ conventions left.
 
    The apply step writes all managed files into `$HOME` and runs the provisioning hooks below. (If you prefer the one-liner that handles everything, `chezmoi init --apply samejar/dotfiles` still works.)
 
-4. The apply step triggers the provisioning hooks automatically:
+5. The apply step triggers the provisioning hooks automatically:
    - `run_before_20-install.sh.tmpl` executes `scripts/install`, which runs
      `brew bundle`, cleans up Homebrew, and executes each topic’s `install.sh`
      (Python, Node, etc.).
@@ -44,7 +50,7 @@ conventions left.
    - `run_after_30-zimfw.sh.tmpl` ensures Zimfw modules are installed and the
      cached `~/.zim/init.zsh` is rebuilt on every apply.
 
-5. Re-run `chezmoi apply` any time you pull updates to keep your machine in
+6. Re-run `chezmoi apply` any time you pull updates to keep your machine in
    sync. The provisioning hook (`run_before_20-install.sh.tmpl`) reruns each
    time, so global pnpm packages, Homebrew bundles, etc., stay current.
 
