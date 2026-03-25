@@ -279,7 +279,6 @@ cask 'vlc'
 cask 'fission'
 cask 'soundsource'
 cask 'calibre'
-cask 'kindle'
 
 
 ######################################################
@@ -408,6 +407,7 @@ mas 'Everyday Habit Tracker', id: 1394150432
 mas 'Flow', id: 1423210932
 mas 'Focused Work', id: 1523968394
 mas 'Goodnotes', id: 1444383602
+mas 'Kindle', id: 405399194
 mas 'iA Writer', id: 775737590
 mas 'Keynote', id: 361285480
 mas 'Magnet', id: 441258766
