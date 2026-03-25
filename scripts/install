@@ -22,7 +22,11 @@ if command -v brew >/dev/null 2>&1; then
   echo "› brew update"
   brew update
   echo "› brew bundle"
-  HOMEBREW_BUNDLE_FILE="${HOMEBREW_BUNDLE_FILE:-$DOTFILES/.Brewfile}" brew bundle
+  default_brewfile="$HOME/.Brewfile"
+  if [ ! -f "$default_brewfile" ] && [ -f "$DOTFILES/.Brewfile" ]; then
+    default_brewfile="$DOTFILES/.Brewfile"
+  fi
+  HOMEBREW_BUNDLE_FILE="${HOMEBREW_BUNDLE_FILE:-$default_brewfile}" brew bundle
   echo "› brew autoremove"
   brew autoremove
   echo "› brew cleanup --prune=30"
