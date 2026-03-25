@@ -281,7 +281,6 @@ cask 'fission'
 cask 'soundsource'
 cask 'calibre'
 cask 'kindle'
-cask 'sigil'
 
 
 ######################################################
@@ -289,7 +288,6 @@ cask 'sigil'
 ######################################################
 cask 'slack'
 cask 'signal'
-cask 'grammarly'
 cask 'fantastical'
 cask 'fastmail'
 cask 'godspeed'
