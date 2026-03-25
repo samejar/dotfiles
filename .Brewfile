@@ -318,7 +318,7 @@ cask 'librewolf'
 cask 'tor-browser'
 cask 'vivaldi'
 cask 'choosy'
-cahs 'coherence-x'
+cask 'coherence-x'
 cask 'servo'
 
 
