@@ -14,16 +14,26 @@ conventions left.
    brew install chezmoi git
    ```
 
-2. Apply the dotfiles with chezmoi:
+2. Clone the dotfiles into the chezmoi source tree:
 
    ```sh
-   chezmoi init --apply samejar/dotfiles
+   chezmoi init samejar/dotfiles
    ```
 
-   Chez-moi clones this repo to `~/.local/share/chezmoi` and writes the managed
-   files into `$HOME`.
+   This command clones the repository into `~/.local/share/chezmoi`. Run
+   `chezmoi cd` at any time to jump into that directory.
 
-3. `chezmoi init --apply` triggers the provisioning hooks automatically:
+3. Apply the configuration:
+
+   ```sh
+   chezmoi apply
+   ```
+
+   The apply step writes all managed files into `$HOME` and triggers the
+   provisioning hooks below. (You can also combine steps 2 and 3 with
+   `chezmoi init --apply samejar/dotfiles` if you prefer.)
+
+4. `chezmoi apply` triggers the provisioning hooks automatically:
    - `run_before_20-install.sh.tmpl` executes `scripts/install`, which runs
      `brew bundle`, cleans up Homebrew, and executes each topic’s `install.sh`
      (Python, Node, etc.).
@@ -35,7 +45,7 @@ conventions left.
    - `run_after_30-zimfw.sh.tmpl` ensures Zimfw modules are installed and the
      cached `~/.zim/init.zsh` is rebuilt on every apply.
 
-4. Re-run `chezmoi apply` any time you pull updates to keep your machine in
+5. Re-run `chezmoi apply` any time you pull updates to keep your machine in
    sync. The provisioning hook (`run_before_20-install.sh.tmpl`) reruns each
    time, so global pnpm packages, Homebrew bundles, etc., stay current.
 
@@ -61,12 +71,13 @@ by `chezmoi apply` to propagate any changes.
    ```sh
    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
    brew install chezmoi git
-   chezmoi init --apply samejar/dotfiles
+   chezmoi init samejar/dotfiles
+   chezmoi apply
    ```
 
-   `chezmoi apply` (and the `--apply` flag above) automatically runs the
-   provisioning scripts and macOS defaults hook described earlier. Re-run
-   `chezmoi apply` any time you sync new changes.
+   `chezmoi init` clones the repo into `~/.local/share/chezmoi`, and
+   `chezmoi apply` runs the provisioning scripts plus the macOS defaults hooks
+   described earlier. Re-run `chezmoi apply` any time you sync new changes.
 
 3. **Install 1Password & its CLI**
    - Install 1Password from the Mac App Store and sign in.
