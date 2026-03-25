@@ -15,14 +15,14 @@ conventions left.
 
    The repository must live at `~/.local/share/chezmoi` for chezmoi to manage it. Use `chezmoi cd` at any time to jump into this directory.
 
-2. Install chezmoi (if it is not already available):
+2. Install chezmoi:
 
    ```sh
    sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
    ```
 
    Adjust the install path if `/usr/local/bin` isn’t writable; any directory on
-   your `$PATH` works. Skip this step if `chezmoi` is already installed.
+   your `$PATH` works.
 
 3. Apply the dotfiles:
 
@@ -73,7 +73,7 @@ by `chezmoi apply` to propagate any changes.
    chezmoi apply
    ```
 
-   This sequence ensures the repo exists under `~/.local/share/chezmoi` before chezmoi runs. Re-run `chezmoi apply` any time you sync new changes. (If you want a shortcut, `chezmoi init --apply samejar/dotfiles` still performs all of these steps automatically.)
+   This sequence ensures the repo exists under `~/.local/share/chezmoi` before chezmoi runs. Re-run `chezmoi apply` any time you sync new changes. (`chezmoi init --apply samejar/dotfiles` remains a shortcut if you prefer a single command.)
 
 3. **Install 1Password & its CLI**
    - Install 1Password from the Mac App Store and sign in.
