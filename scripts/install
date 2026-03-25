@@ -4,6 +4,16 @@
 
 set -e
 
+run_with_tty() {
+  if [ -t 1 ]; then
+    "$@"
+  else
+    local cmd
+    cmd=$(printf '%q ' "$@")
+    "${SCRIPT_BIN:-/usr/bin/script}" -q /dev/null /bin/bash -lc "$cmd"
+  fi
+}
+
 DOTFILES=${DOTFILES:-$HOME/.local/share/chezmoi}
 if [ ! -d "$DOTFILES" ]; then
   echo "DOTFILES directory $DOTFILES not found. Run 'chezmoi init --apply samejar/dotfiles' first." >&2
@@ -20,17 +30,18 @@ fi
 
 if command -v brew >/dev/null 2>&1; then
   echo "› brew update"
-  brew update
+  SCRIPT_BIN=${SCRIPT_BIN:-$(command -v script 2>/dev/null || echo /usr/bin/script)}
+  run_with_tty brew update
   echo "› brew bundle"
   default_brewfile="$HOME/.Brewfile"
   if [ ! -f "$default_brewfile" ] && [ -f "$DOTFILES/.Brewfile" ]; then
     default_brewfile="$DOTFILES/.Brewfile"
   fi
-  HOMEBREW_BUNDLE_FILE="${HOMEBREW_BUNDLE_FILE:-$default_brewfile}" brew bundle
+  run_with_tty env HOMEBREW_BUNDLE_FILE="${HOMEBREW_BUNDLE_FILE:-$default_brewfile}" brew bundle
   echo "› brew autoremove"
-  brew autoremove
+  run_with_tty brew autoremove
   echo "› brew cleanup --prune=30"
-  brew cleanup --prune=30
+  run_with_tty brew cleanup --prune=30
 fi
 
 if [ -x "$DOTFILES/scripts/setapp/provision.sh" ]; then
