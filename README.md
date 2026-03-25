@@ -15,14 +15,14 @@ conventions left.
 
    The repository must live at `~/.local/share/chezmoi` for chezmoi to manage it. Use `chezmoi cd` at any time to jump into this directory.
 
-2. Install chezmoi (and Homebrew if needed):
+2. Install chezmoi (if it is not already available):
 
    ```sh
-   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-   brew install chezmoi
+   sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
    ```
 
-   If you already have brew/chezmoi installed you can skip this step.
+   Adjust the install path if `/usr/local/bin` isn’t writable; any directory on
+   your `$PATH` works. Skip this step if `chezmoi` is already installed.
 
 3. Apply the dotfiles:
 
@@ -69,8 +69,7 @@ by `chezmoi apply` to propagate any changes.
 
    ```sh
    git clone https://github.com/samejar/dotfiles.git ~/.local/share/chezmoi
-   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-   brew install chezmoi
+   sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
    chezmoi apply
    ```
 
