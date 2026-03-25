@@ -33,5 +33,9 @@ if command -v brew >/dev/null 2>&1; then
   brew cleanup --prune=30
 fi
 
+if [ -x "$DOTFILES/scripts/setapp/provision.sh" ]; then
+  "$DOTFILES/scripts/setapp/provision.sh"
+fi
+
 # find the installers and run them iteratively
 find . -name install.sh | while read installer ; do sh -c "${installer}" ; done
