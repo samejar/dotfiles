@@ -389,13 +389,14 @@ cask 'suspicious-package'
 
 ## Browsers & Web
 mas '1Password for Safari', id: 1569813296
-mas 'Ivory', id: 6444602274
 mas 'Kagi for Safari', id: 1622835804
-mas 'PiPifier', id: 1160374471
 mas 'Save to Reader', id: 1640236961
 mas 'StopTheMadness Pro', id: 6471380298
 mas 'Wipr', id: 1662217862
 mas 'xSearch', id: 1579902068
+
+## Social & Reading
+mas 'Ivory', id: 6444602274
 
 ## Productivity & Notes
 mas 'Calendar 366 II', id: 1265895169
