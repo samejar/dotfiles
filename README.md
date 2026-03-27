@@ -15,22 +15,16 @@ conventions left.
 
    The repository must live at `~/.local/share/chezmoi` for chezmoi to manage it. Use `chezmoi cd` at any time to jump into this directory.
 
-2. Install homebrew:
+2. Run the bootstrap script:
 
    ```sh
-   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ./bootstrap.sh
    ```
 
-3. Install chezmoi:
+   This script runs macOS software updates, installs Homebrew if missing, and
+   installs chezmoi if missing.
 
-   ```sh
-   brew install chezmoi
-   ```
-
-   Adjust the install path if `/usr/local/bin` isn’t writable; any directory on
-   your `$PATH` works.
-
-4. Apply the dotfiles:
+3. Apply the dotfiles:
 
    ```sh
    chezmoi apply
@@ -38,20 +32,23 @@ conventions left.
 
    The apply step writes all managed files into `$HOME` and runs the provisioning hooks below. (If you prefer the one-liner that handles everything, `chezmoi init --apply samejar/dotfiles` still works.)
 
-5. The apply step triggers the provisioning hooks automatically:
-   - `run_before_20-install.sh.tmpl` executes `scripts/install`, which runs
-     `brew bundle`, cleans up Homebrew, and executes each topic’s `install.sh`
-     (Python, Node, etc.).
-   - `run_once_before_10-macos.sh.tmpl` applies the curated macOS defaults and
+4. The apply step triggers the provisioning hooks automatically:
+   - `run_once_after_10-macos.sh.tmpl` applies the curated macOS defaults and
      MailMate setup scripts the first time you apply these dotfiles on a new
      machine.
-   - `run_once_after_20-clone-projects.sh.tmpl` clones any repositories listed
-     under `[data].projects` in `.chezmoidata.tmpl`.
+   - `run_after_20-install.sh.tmpl` executes `scripts/install`, which runs
+     `brew bundle`, cleans up Homebrew, and executes each topic’s `install.sh`
+     (Python, Node, etc.).
+   - `run_after_25-setapp.sh.tmpl` provisions Setapp apps after
+     `~/.setapp/AppList` has been created by apply.
    - `run_after_30-zimfw.sh.tmpl` ensures Zimfw modules are installed and the
      cached `~/.zim/init.zsh` is rebuilt on every apply.
+   - `run_after_40-clone-projects.sh.tmpl` clones any repositories listed under
+     `projects` in `.chezmoidata.yaml`, skipping repositories that
+     already exist.
 
-6. Re-run `chezmoi apply` any time you pull updates to keep your machine in
-   sync. The provisioning hook (`run_before_20-install.sh.tmpl`) reruns each
+5. Re-run `chezmoi apply` any time you pull updates to keep your machine in
+   sync. The provisioning hook (`run_after_20-install.sh.tmpl`) reruns each
    time, so global pnpm packages, Homebrew bundles, etc., stay current.
 
 Customize your shell by editing:
@@ -71,11 +68,11 @@ by `chezmoi apply` to propagate any changes.
      prompted.
    - In Safari/Arc, sign in to GitHub with your passkey so HTTPS cloning works
      immediately.
-2. **Clone the repo, install chezmoi, and apply the dotfiles**
+2. **Clone the repo, run bootstrap, and apply the dotfiles**
 
    ```sh
    git clone https://github.com/samejar/dotfiles.git ~/.local/share/chezmoi
-   sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
+   ~/.local/share/chezmoi/bootstrap.sh
    chezmoi apply
    ```
 
@@ -108,13 +105,13 @@ by `chezmoi apply` to propagate any changes.
 
 6. **(Optional) Customize default project clones**
    - ChezMoi maintains a list of frequently used repositories in
-     `.chezmoidata.tmpl` (`[data].projects`). The
-     `run_once_after_20-clone-projects.sh.tmpl` hook clones each repo the first
-     time you apply these dotfiles on a machine. Edit that list to add/remove
-     repositories before running `chezmoi apply` if you want automatic checkouts
-     in `~/development/...`.
+     `.chezmoidata.yaml` (`projects`). The
+      `run_after_40-clone-projects.sh.tmpl` hook clones each repo after apply,
+      skipping destinations that already exist. Edit that list to add/remove
+      repositories before running `chezmoi apply` if you want automatic
+      checkouts in `~/development/...`.
 7. **(Optional) Customize global pnpm packages**
-   - The same data file also exposes `[data].pnpm_packages`, which drives the
+   - The same data file also exposes `pnpm_packages`, which drives the
      templated `scripts/node/install.sh`. Adjust that array to control which CLI
      tools get installed globally via `pnpm add -g ...` during provisioning.
 
@@ -127,7 +124,7 @@ by `chezmoi apply` to propagate any changes.
   live only in `~/.local/share/chezmoi` and are never copied to `$HOME`.
 - **`bin/`** – CLI helpers that are added to your shell `$PATH`.
 - **`zsh/`** – modular shell configuration (zimrc, aliases, config snippets).
-- **`.chezmoidata.tmpl`** – declarative data for repo clones and pnpm packages.
+- **`.chezmoidata.yaml`** – declarative data for repo clones and pnpm packages.
 
 ## language runtimes
 
@@ -135,7 +132,7 @@ by `chezmoi apply` to propagate any changes.
   [uv](https://github.com/astral-sh/uv) for CLI installs, falling back to
   `pip3`.
 - **Node** – `scripts/node/install.sh` installs whatever is in
-  `[data].pnpm_packages` via `pnpm add -g` (currently just `playwright`).
+  `pnpm_packages` via `pnpm add -g` (currently just `playwright`).
 - **Go** – `scripts/go/path.zsh` configures `GOPATH/GOBIN` so `go install`
   binaries land on `$PATH`.
 

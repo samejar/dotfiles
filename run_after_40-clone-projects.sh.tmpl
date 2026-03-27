@@ -1,0 +1,40 @@
+#!/bin/sh
+set -e
+
+{{- if hasKey . "projects" }}
+echo "[hook run_after_40] Cloning standard development repositories..."
+failures=0
+total={{ len .projects }}
+current=0
+while IFS=$'\t' read -r repo dest; do
+  [ -z "$repo" ] && continue
+  current=$((current + 1))
+  case "$dest" in
+    /*) ;;
+    *) dest="{{ .chezmoi.homeDir }}/$dest" ;;
+  esac
+  if [ -d "$dest" ]; then
+    echo "  [$current/$total] Skipping $dest (already exists)"
+    continue
+  fi
+  parent_dir=$(dirname "$dest")
+  mkdir -p "$parent_dir"
+  echo "  [$current/$total] git clone $repo -> $dest"
+  if ! git clone "$repo" "$dest"; then
+    echo "  [$current/$total] Error: failed to clone $repo" >&2
+    failures=$((failures + 1))
+  fi
+done <<'EOF'
+{{- range .projects }}
+{{ .repo }}	{{ .path }}
+{{- end }}
+EOF
+
+if [ "$failures" -gt 0 ]; then
+  echo "[hook run_after_40] $failures project clone(s) failed; retry on next chezmoi apply." >&2
+  exit 1
+fi
+echo "[hook run_after_40] Project clone pass complete"
+{{- else }}
+echo "[hook run_after_40] No projects defined in chezmoi data; skipping git clone hook."
+{{- end }}

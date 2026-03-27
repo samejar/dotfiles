@@ -1,15 +1,17 @@
 #!/bin/sh
 set -e
 
+echo "[hook run_after_30] Checking zimfw prerequisites"
+
 if ! command -v zsh >/dev/null 2>&1; then
-  echo "Skipping zimfw bootstrap (zsh not installed)."
+  echo "[hook run_after_30] Skipping zimfw bootstrap (zsh not installed)."
   exit 0
 fi
 
-if ! command -v zimfw >/dev/null 2>&1; then
-  echo "Skipping zimfw bootstrap (zimfw not installed yet)."
+echo "[hook run_after_30] Updating zimfw modules"
+if ! ZDOTDIR="{{ .chezmoi.homeDir }}" zsh -i -c 'command -v zimfw >/dev/null 2>&1 && zimfw install && zimfw build'; then
+  echo "[hook run_after_30] Skipping zimfw bootstrap (zimfw not available in interactive zsh yet)."
   exit 0
 fi
 
-echo "Updating zimfw modules"
-ZDOTDIR="{{ .chezmoi.homeDir }}" zsh -i -c 'zimfw install && zimfw build'
+echo "[hook run_after_30] Zimfw update complete"

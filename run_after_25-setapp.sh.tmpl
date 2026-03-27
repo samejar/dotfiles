@@ -1,0 +1,12 @@
+#!/bin/sh
+set -e
+
+cd "{{ .chezmoi.sourceDir }}"
+echo "[hook run_after_25] Checking Setapp provisioning"
+
+if [ -x ./scripts/setapp/provision.sh ]; then
+  ./scripts/setapp/provision.sh
+  echo "[hook run_after_25] Setapp provisioning complete"
+else
+  echo "[hook run_after_25] Skipping (scripts/setapp/provision.sh not executable)"
+fi

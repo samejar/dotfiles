@@ -1,0 +1,21 @@
+#!/bin/sh
+set -e
+
+cd "{{ .chezmoi.sourceDir }}"
+echo "[hook run_once_after_10] Applying one-time macOS defaults"
+
+if [ -x ./scripts/macos/set-defaults.sh ]; then
+  echo "[hook run_once_after_10] Running scripts/macos/set-defaults.sh"
+  ./scripts/macos/set-defaults.sh
+else
+  echo "[hook run_once_after_10] Skipping scripts/macos/set-defaults.sh (not executable)"
+fi
+
+if [ -f ./scripts/macos/mailmate.sh ]; then
+  echo "[hook run_once_after_10] Running scripts/macos/mailmate.sh"
+  sh ./scripts/macos/mailmate.sh
+else
+  echo "[hook run_once_after_10] Skipping scripts/macos/mailmate.sh (not found)"
+fi
+
+echo "[hook run_once_after_10] macOS one-time setup complete"

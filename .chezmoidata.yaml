@@ -1,0 +1,7 @@
+projects:
+  - repo: git@github.com:samejar/hendon-infrastructure.git
+    path: development/hendon-infrastructure
+
+
+pnpm_packages:
+  - playwright

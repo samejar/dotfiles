@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+
+cd "{{ .chezmoi.sourceDir }}"
+echo "[hook run_after_20] Starting install provisioning"
+./scripts/install
+echo "[hook run_after_20] Install provisioning complete"

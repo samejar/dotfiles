@@ -8,6 +8,14 @@
 #
 # Run ./set-defaults.sh and you'll be good to go.
 
+status() {
+  printf '[macos-defaults] %s\n' "$*"
+}
+
+warn() {
+  printf '[macos-defaults] Warning: %s\n' "$*" >&2
+}
+
 # Ask for the administrator password upfront
 #sudo -v
 
@@ -115,7 +123,13 @@ defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
 defaults write NSGlobalDomain AppleMetricUnits -bool true
 
 # Set the timezone; see `systemsetup -listtimezones` for other values
-sudo systemsetup -settimezone "Europe/London" > /dev/null
+if sudo -n true >/dev/null 2>&1; then
+  if ! sudo systemsetup -settimezone "Europe/London" > /dev/null 2>&1; then
+    warn "Could not set timezone to Europe/London (skipping)."
+  fi
+else
+  warn "Skipping timezone update (no cached sudo credentials)."
+fi
 
 #Save to disk by default (not iCloud):
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
@@ -236,6 +250,12 @@ chflags nohidden ~/Library
 # Dock & hot corners                                                          #
 ###############################################################################
 
+# Dock icon size of 36 pixels.
+defaults write com.apple.dock "tilesize" -int "36"
+
+#Do not display recent apps in the Dock
+defaults write com.apple.dock "show-recents" -bool "false"
+
 # Enable highlight hover effect for the grid view of a stack (Dock)
 defaults write com.apple.dock mouse-over-hilte-stack -bool true
 
@@ -278,7 +298,12 @@ defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock showhidden -bool true
 
 # Reset Launchpad
-find ~/Library/Application\ Support/Dock -name "*.db" -maxdepth 1 -delete
+dock_dir="$HOME/Library/Application Support/Dock"
+if [ -d "$dock_dir" ]; then
+  find "$dock_dir" -maxdepth 1 -name "*.db" -delete
+else
+  status "Skipping Launchpad reset (Dock directory not present yet)."
+fi
 
 # Add a spacer to the left side of the Dock (where the applications are)
 #defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
@@ -318,6 +343,8 @@ defaults write com.apple.dock mru-spaces  -bool false
 # Safari & WebKit                                                             #
 ###############################################################################
 
+if defaults read com.apple.Safari >/dev/null 2>&1; then
+
 # Set Safari’s home page to `about:blank` for faster loading
 defaults write com.apple.Safari HomePage -string "about:blank"
 
@@ -347,6 +374,10 @@ defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool 
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
 # Add a context menu item for showing the Web Inspector in web views
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+
+else
+  status "Skipping Safari defaults (Safari domain unavailable; launch Safari once to initialize preferences)."
+fi
 
 
 ###############################################################################
@@ -388,7 +419,8 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 # Address Book, Dashboard, iCal, TextEdit, and Disk Utility                   #
 ###############################################################################
 # Enable the debug menu in Address Book
-defaults write com.apple.addressbook ABShowDebugMenu -bool true
+defaults write com.apple.addressbook ABShowDebugMenu -bool true 2>/dev/null || \
+  status "Skipping Address Book defaults (domain unavailable)."
 # Enable Dashboard dev mode (allows keeping widgets on the desktop)
 defaults write com.apple.dashboard devmode -bool true
 # Use plain text mode for new TextEdit documents
@@ -424,7 +456,13 @@ defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool YES
 ###############################################################################
 # Captive WiFi                                                                #
 ###############################################################################
-defaults write /Library/Preferences/SystemConfiguration/com.apple.captive.control Active -boolean false
+if sudo -n true >/dev/null 2>&1; then
+  if ! sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.captive.control Active -boolean false 2>/dev/null; then
+    warn "Could not disable captive portal check (requires admin privileges)."
+  fi
+else
+  warn "Skipping captive portal setting (no cached sudo credentials)."
+fi
 
 ###############################################################################
 # Kill affected applications                                                  #
@@ -432,4 +470,4 @@ defaults write /Library/Preferences/SystemConfiguration/com.apple.captive.contro
 for app in "Dock" "Finder" "SystemUIServer"; do
 	killall "$app" > /dev/null 2>&1 || true
 done
-echo "macOS defaults applied. Some changes may require you to log out or reboot."
+status "macOS defaults applied. Some changes may require you to log out or reboot."

@@ -2,7 +2,11 @@
 #
 # Run all dotfiles installers.
 
-set -e
+set -euo pipefail
+
+log() {
+  printf '[install] %s\n' "$*"
+}
 
 run_with_tty() {
   if [ -t 1 ]; then
@@ -22,13 +26,16 @@ fi
 export DOTFILES
 
 cd "$DOTFILES"
+log "Starting provisioning from $DOTFILES"
 
 # Ensure Homebrew exists
 if ! command -v brew >/dev/null 2>&1; then
-  "$DOTFILES/homebrew/install.sh" 2>&1 || true
+  log "Homebrew not found; attempting bootstrap installer"
+  "$DOTFILES/scripts/homebrew/install.sh" 2>&1 || true
 fi
 
 if command -v brew >/dev/null 2>&1; then
+  log "Running Homebrew maintenance"
   echo "› brew update"
   SCRIPT_BIN=${SCRIPT_BIN:-$(command -v script 2>/dev/null || echo /usr/bin/script)}
   run_with_tty brew update
@@ -37,16 +44,36 @@ if command -v brew >/dev/null 2>&1; then
   if [ ! -f "$default_brewfile" ] && [ -f "$DOTFILES/Brewfile" ]; then
     default_brewfile="$DOTFILES/Brewfile"
   fi
-  run_with_tty env HOMEBREW_BUNDLE_FILE="${HOMEBREW_BUNDLE_FILE:-$default_brewfile}" brew bundle
+  bundle_file="${HOMEBREW_BUNDLE_FILE:-$default_brewfile}"
+  if run_with_tty env HOMEBREW_BUNDLE_FILE="$bundle_file" brew bundle check --no-upgrade; then
+    log "Brew bundle already satisfied; skipping install"
+  else
+    echo "› brew bundle --no-upgrade"
+    run_with_tty env HOMEBREW_BUNDLE_FILE="$bundle_file" brew bundle --no-upgrade
+  fi
   echo "› brew autoremove"
   run_with_tty brew autoremove
   echo "› brew cleanup --prune=30"
   run_with_tty brew cleanup --prune=30
-fi
-
-if [ -x "$DOTFILES/scripts/setapp/provision.sh" ]; then
-  "$DOTFILES/scripts/setapp/provision.sh"
+else
+  log "Homebrew unavailable; skipping brew update/bundle/cleanup"
 fi
 
 # find the installers and run them iteratively
-find . -name install.sh | while read installer ; do sh -c "${installer}" ; done
+installers=$(find ./scripts -name install.sh | LC_ALL=C sort)
+if [ -z "$installers" ]; then
+  log "No topic installers found under ./scripts"
+  exit 0
+fi
+
+total=$(printf '%s\n' "$installers" | wc -l | tr -d ' ')
+current=0
+printf '%s\n' "$installers" | while IFS= read -r installer; do
+  [ -z "$installer" ] && continue
+  current=$((current + 1))
+  log "[$current/$total] Running ${installer#./}"
+  sh "$installer"
+  log "[$current/$total] Finished ${installer#./}"
+done
+
+log "Provisioning complete"
