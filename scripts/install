@@ -40,9 +40,9 @@ if command -v brew >/dev/null 2>&1; then
   SCRIPT_BIN=${SCRIPT_BIN:-$(command -v script 2>/dev/null || echo /usr/bin/script)}
   run_with_tty brew update
   echo "› brew bundle"
-  default_brewfile="$HOME/Brewfile"
-  if [ ! -f "$default_brewfile" ] && [ -f "$DOTFILES/Brewfile" ]; then
-    default_brewfile="$DOTFILES/Brewfile"
+  default_brewfile="$HOME/.Brewfile"
+  if [ ! -f "$default_brewfile" ] && [ -f "$DOTFILES/dot_Brewfile" ]; then
+    default_brewfile="$DOTFILES/dot_Brewfile"
   fi
   bundle_file="${HOMEBREW_BUNDLE_FILE:-$default_brewfile}"
   if run_with_tty env HOMEBREW_BUNDLE_FILE="$bundle_file" brew bundle check --no-upgrade; then

@@ -376,7 +376,8 @@ cask 'font-redacted-script'
 # Quicklook #
 #############
 # See: https://github.com/sindresorhus/quick-look-plugins
-cask 'qlvideo'
+cask 'quicklook-video'
+cask 'qlmarkdown'
 cask 'suspicious-package'
 
 
