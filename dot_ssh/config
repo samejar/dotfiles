@@ -7,6 +7,10 @@ Host *
 
 Include ~/.colima/ssh_config
 
+Host github.com
+  IdentityFile ~/.ssh/id_vcs.pub
+  IdentitiesOnly yes
+
 #########################
 # Hendon Configuration #
 #########################
