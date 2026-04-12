@@ -11,6 +11,12 @@ These rules are mandatory for any coding agent making changes in this repo.
 5. After editing, verify scope with `git diff -- <file>` and ensure only intended changes are present.
 6. If actual change scope expands beyond the request, stop and report before continuing.
 
+## Chezmoi-Managed Files
+
+1. For files managed by chezmoi, edit only the source file under `~/.local/share/chezmoi/`.
+2. Do not directly edit the deployed copy in `$HOME` unless explicitly requested.
+3. After source edits, sync the home copy with `chezmoi apply`.
+
 ## Git Safety
 
 1. Never use destructive git commands (`reset --hard`, forced checkout, etc.) unless explicitly requested.
