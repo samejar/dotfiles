@@ -11,6 +11,7 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
 setopt EXTENDED_HISTORY
+setopt CORRECT
 
 # Homebrew completions first
 [[ -d /opt/homebrew/share/zsh-completions ]] && fpath=(/opt/homebrew/share/zsh-completions $fpath)

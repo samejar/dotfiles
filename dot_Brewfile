@@ -155,6 +155,7 @@ cask 'aws-vault-binary'
 # Containers, Kubernetes & Supply Chain Security #
 #################################################
 cask 'podman-desktop'
+brew 'podman'
 cask 'parallels'
 brew 'colima'
 brew 'lazydocker'
