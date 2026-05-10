@@ -98,6 +98,10 @@ brew 'cloc'
 brew 'difftastic'
 brew 'diffoci'
 brew 'hadolint'
+brew 'actionlint'
+brew 'codespell'
+brew 'renovate'
+brew 'zizmor'
 
 #############################################
 # Source Control, IDEs & Documentation      #
@@ -175,6 +179,8 @@ brew 'kustomize'
 brew 'helm'
 brew 'tektoncd-cli'
 brew 'conftest'
+brew 'kubeconform'
+brew 'gitleaks'
 
 
 ##################################
